@@ -8,7 +8,7 @@ Il permet de lire les données disponibles en opendata ou celles disponibles au 
 Installation à partir de github :
 
 ``` r
-devtools::install_github("MaëlTheuliere/rrrpls")
+devtools::install_github("MaelTheuliere/rrrpls")
 ```
 
 ## Exemple
