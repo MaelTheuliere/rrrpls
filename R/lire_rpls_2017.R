@@ -1,4 +1,4 @@
-#' Importer une ficher rpls 2017 geolocalisé csv en Rdata
+#' Importer une ficher rpls 2017 geolocalise csv en Rdata
 #'
 #' @param file le fichier csv
 #' @param as_sf booléen TRUE si on souhaite convertir le dataframe en spatial dataframe (pour les données géolocalisées)
