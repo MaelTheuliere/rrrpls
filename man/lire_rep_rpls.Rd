@@ -7,16 +7,16 @@
 lire_rep_rpls(dir, annee, geoloc = F, as_sf = F)
 }
 \arguments{
-\item{annee}{le millésime du fichier}
+\item{dir}{le repertoire ou se trouve les fichiers csv}
 
-\item{geoloc}{booléen TRUE si on souhaite importer la versin géolocalisée du millésime}
+\item{annee}{le millesime du fichier}
 
-\item{as_sf}{booléen TRUE si on souhaite convertir le dataframe en spatial dataframe (pour les données géolocalisées). Par défaut, utilisation de la projection Lambert93.}
+\item{geoloc}{booleen TRUE si on souhaite importer la versin geolocalisee du millesime}
 
-\item{file}{le répertoire ou se trouve les fichiers csv}
+\item{as_sf}{booleen TRUE si on souhaite convertir le dataframe en spatial dataframe (pour les donnees geolocalisees). Par defaut, utilisation de la projection Lambert93.}
 }
 \value{
-la fonction renvoie un dataframe ou un spatial dataframe qui contient l'ensemble des données contenues dans les csv
+la fonction renvoie un dataframe ou un spatial dataframe qui contient l'ensemble des donnees contenues dans les csv
 }
 \description{
 Importer des fichers rpls csv en dataframe

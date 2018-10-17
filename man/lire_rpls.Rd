@@ -9,11 +9,11 @@ lire_rpls(file, annee, geoloc = F, as_sf = F)
 \arguments{
 \item{file}{le fichier csv}
 
-\item{annee}{le millésime du fichier}
+\item{annee}{le millsime du fichier}
 
-\item{geoloc}{booléen TRUE si on souhaite importer la versin géolocalisée du millésime}
+\item{geoloc}{booleen TRUE si on souhaite importer la versin geolocalisee du millesime}
 
-\item{as_sf}{booléen TRUE si on souhaite convertir le dataframe en spatial dataframe (pour les données géolocalisées)}
+\item{as_sf}{booleen TRUE si on souhaite convertir le dataframe en spatial dataframe (pour les donnees geolocalisees)}
 }
 \value{
 la fonction renvoie un dataframe ou un spatial dataframe

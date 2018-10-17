@@ -1,13 +1,12 @@
 #' Importer une ficher rpls csv en Rdata
 #'
 #' @param file le fichier csv
-#' @param annee le millésime du fichier
-#' @param geoloc booléen TRUE si on souhaite importer la versin géolocalisée du millésime
-#' @param as_sf booléen TRUE si on souhaite convertir le dataframe en spatial dataframe (pour les données géolocalisées)
+#' @param annee le millsime du fichier
+#' @param geoloc booleen TRUE si on souhaite importer la versin geolocalisee du millesime
+#' @param as_sf booleen TRUE si on souhaite convertir le dataframe en spatial dataframe (pour les donnees geolocalisees)
 #'
 #' @return la fonction renvoie un dataframe ou un spatial dataframe
 #' @export
-#' @examples
 
 lire_rpls<-function(file,annee,geoloc=F,as_sf=F){
   if (annee==2017 & geoloc==T) {
@@ -25,16 +24,15 @@ lire_rpls<-function(file,annee,geoloc=F,as_sf=F){
 
 #' Importer des fichers rpls csv en dataframe
 #'
-#' @param file le répertoire ou se trouve les fichiers csv
-#' @param annee le millésime du fichier
-#' @param geoloc booléen TRUE si on souhaite importer la versin géolocalisée du millésime
-#' @param as_sf booléen TRUE si on souhaite convertir le dataframe en spatial dataframe (pour les données géolocalisées). Par défaut, utilisation de la projection Lambert93.
+#' @param dir le repertoire ou se trouve les fichiers csv
+#' @param annee le millesime du fichier
+#' @param geoloc booleen TRUE si on souhaite importer la versin geolocalisee du millesime
+#' @param as_sf booleen TRUE si on souhaite convertir le dataframe en spatial dataframe (pour les donnees geolocalisees). Par defaut, utilisation de la projection Lambert93.
 #'
-#' @return la fonction renvoie un dataframe ou un spatial dataframe qui contient l'ensemble des données contenues dans les csv
+#' @return la fonction renvoie un dataframe ou un spatial dataframe qui contient l'ensemble des donnees contenues dans les csv
 #' @export
 #' @importFrom purrr map_df
 #' @importFrom sf st_as_sf
-#' @examples
 
 lire_rep_rpls<-function(dir,annee,geoloc=F,as_sf=F){
   list<-list.files(path=dir)

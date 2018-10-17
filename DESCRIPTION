@@ -1,5 +1,5 @@
 Package: rrrpls
-Title: Lecture des données RPLS (Répertoire du Parc Locatif Social)
+Title: Lecture des donnees RPLS (Repertoire du Parc Locatif Social)
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Maël",
@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "mael.theuliere@gmail.com")
 Description: What the package does (one paragraph).
-License: MIT + file LICENSE
+License: MIT
 Encoding: UTF-8
 LazyData: true
 Imports: 
@@ -15,7 +15,8 @@ Imports:
     sf,
     readr,
     forcats,
-    purrr
+    purrr,
+    magrittr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0
 URL: https://github.com/MaelTheuliere/rrrpls
