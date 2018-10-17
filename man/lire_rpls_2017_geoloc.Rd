@@ -2,7 +2,7 @@
 % Please edit documentation in R/lire_rpls_2017.R
 \name{lire_rpls_2017_geoloc}
 \alias{lire_rpls_2017_geoloc}
-\title{Importer une ficher rpls 2017 geolocalisé csv en Rdata}
+\title{Importer une ficher rpls 2017 geolocalise csv en Rdata}
 \usage{
 lire_rpls_2017_geoloc(file, as_sf = F)
 }
@@ -15,5 +15,5 @@ lire_rpls_2017_geoloc(file, as_sf = F)
 la fonction renvoie un dataframe ou un spatial dataframe
 }
 \description{
-Importer une ficher rpls 2017 geolocalisé csv en Rdata
+Importer une ficher rpls 2017 geolocalise csv en Rdata
 }
