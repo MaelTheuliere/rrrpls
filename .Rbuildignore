@@ -1,0 +1,4 @@
+^data-raw$
+^rrrpls\.Rproj$
+^\.Rproj\.user$
+init.R

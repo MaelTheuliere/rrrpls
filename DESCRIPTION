@@ -11,13 +11,27 @@ License: MIT
 Encoding: UTF-8
 LazyData: true
 Imports: 
+    rmarkdown,
+    bookdown,
     dplyr,
     sf,
     readr,
     forcats,
     purrr,
-    magrittr
+    magrittr,
+    stringr,
+    COGiter,
+    cartography,
+    ggplot2,
+    glue,
+    hrbrthemes,
+    patchwork,
+    rlang,
+    tibble,
+    tidyr,
+    viridisLite
+Remotes: MaelTheuliere/COGiter
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 URL: https://github.com/MaelTheuliere/rrrpls
 BugReports: https://github.com/MaelTheuliere/rrrpls/issues

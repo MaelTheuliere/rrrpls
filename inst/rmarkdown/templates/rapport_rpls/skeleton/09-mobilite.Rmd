@@ -1,0 +1,27 @@
+# Taux de mobilité dans le parc {#mobilite}
+
+```{r map_mobilite,fig.width=14,fig.height=10}
+composeur_carte(indicateur="Taux de mobilité",
+                titre="Taux de mobilité dans le parc social",
+                soustitre="En %",
+                parc_recent=F,
+                basdepage=NULL,
+                variable=Valeur,
+                filtre_zero=T,
+                na_recode="Pas de logements sociaux")
+```
+
+
+
+# Taux de vacance dans le parc {#vacance}
+
+```{r map_vacance,fig.width=14,fig.height=10}
+composeur_carte(indicateur="Taux de vacance",
+                titre="Taux de vacance dans le parc social",
+                soustitre="En %",
+                parc_recent=F,
+                basdepage=NULL,
+                variable=Valeur,
+                filtre_zero=F,
+                na_recode="Pas de logements sociaux")
+```

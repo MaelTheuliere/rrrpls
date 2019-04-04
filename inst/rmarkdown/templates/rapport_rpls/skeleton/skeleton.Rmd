@@ -1,0 +1,110 @@
+---
+author: "Maël THEULIERE"
+date: "15/11/2018"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+params:
+  region_code: "53"
+  annee: "2018"
+  region_nom: "Pays de la Loire"
+  epci_ref: !r c("244400404","244400644","244900015","245300330","247200132","248500589","200071678","200071876","244400610","200071165")
+title: "Le parc locatif social en `r params$region_nom` au 1er janvier `r params$annee`"
+description: "Une description du parc locatif social en région `r params$region_nom`"
+---
+
+# Introduction 
+
+Ce document est une synthèse de l'état du parc social en `r params$annee` en `r params$region_nom`.
+
+```{r include=FALSE}
+library(COGiter)
+library(rrrpls)
+library(tidyverse)
+library(glue)
+library(hrbrthemes)
+library(patchwork)
+library(purrr)
+library(ggbeeswarm)
+library(viridis)
+library(sf)
+library(cartography)
+library(TidyRpls)
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown','tidyverse','glue','hrbrthemes','patchwork','ggbeeswarm','viridis','sf','cartography','TidyRpls'
+), 'packages.bib')
+knitr::opts_chunk$set(echo = F,warning = F,error = F,message = F,
+                      fig.width=12,fig.height = 6,
+                      width=100,cache=F)
+options(knitr.kable.NA="s")
+nom<-glue("indicateurs_rpls_{params$annee}")
+indicateurs_rpls<-get(nom)
+rm(list=nom)
+nom<-glue("rpls_{params$annee}")
+rpls<-get(nom)
+rm(list=nom)
+df<-filtrer_cog(indicateurs_rpls,reg=params$region_code,garder_supra = ">") %>% filter(CodeZone != "FRMETRO")
+rpls<-rpls %>% 
+  inner_join(communes %>% 
+                            filter(REG==params$region_code)) %>% 
+    mutate(nbpiece_red=fct_collapse(nbpiece_red,
+                                   `Moins de 2 pièces`=c("1","2"),
+                                   `3 et 4 pièces`=c("3","4"),group_other=T) %>%
+             fct_recode(`5 pièces ou plus`="Other"),
+           typeconst_red=fct_collapse(typeconst_red,
+                                      `Collectif`=c("C","E"),
+                                      Individuel=c("I")),
+           dpeenergie_red=fct_explicit_na(dpeenergie_red,na_level = "Inconnu"),
+           dpeserre_red=fct_explicit_na(dpeserre_red,na_level = "Inconnu"),
+           qpv_red=fct_recode(qpv_red,`En QPV`="1",`Hors QPV`="2")
+           )
+             
+
+
+
+epci_ref<-epci %>% 
+  filter(str_detect(REGIONS_DE_L_EPCI,params$region_code),NATURE_EPCI %in% c("ME","CU")) %>% 
+  select(EPCI,NOM_EPCI)
+
+if (length(params$epci_ref)>0) {
+epci_ref<-epci %>% 
+  filter(EPCI %in% params$epci_ref) %>% 
+  select(EPCI,NOM_EPCI)
+}
+
+communes_epci_ref<-liste_zone %>% 
+  filter(TypeZone=="Communes") %>% 
+  inner_join(epci_ref) %>% 
+  select(DEPCOM=CodeZone,NOM_EPCI)
+
+caption<-glue("source : RPLS {params$annee} \n carte des epci au 1er janvier 2018")
+
+
+bbox <- epci_geo %>%
+  inner_join(epci %>% 
+              filter(str_detect(REGIONS_DE_L_EPCI,params$region_code))
+  ) %>% 
+  st_bbox()
+
+epci_geo <- epci_geo %>%
+  left_join(epci %>% 
+              mutate(reg_param=ifelse(str_detect(REGIONS_DE_L_EPCI,params$region_code),1,0)) %>% 
+              select(EPCI,reg_param)
+  ) 
+guide<-guides(colour=F,
+                  alpha=F,
+                  order=0,
+                  fill=guide_legend(direction="horizontal",
+                                    keyheight=unit(2,units="mm"),
+                                    keywidth=unit(20,units="mm"),
+                                    order=1,
+                                    title.position="right",
+                                    title.hjust=0.5,
+                                    nrow=1,
+                                    label.position="bottom",
+                                    label.hjust=0))
+
+```

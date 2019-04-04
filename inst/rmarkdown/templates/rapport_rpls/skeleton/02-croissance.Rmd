@@ -1,0 +1,25 @@
+# La croissance du parc social  {#croissanceduparc}
+
+```{r map_poids_recent,fig.width=12,fig.height=6}
+p_croissance<-carte_indic_croissance(zoom_reg = T) + carte_indic_croissance(zoom_reg = F) + plot_layout(ncol = 2,widths = c(3,2))
+p_croissance
+```
+
+```{r poids_recent, fig.align="right",fig.width=12,fig.height=6}
+df %>% 
+      filter(Indicateur=="Nombre de logements sociaux",
+           SousEnsemble %in% c("Ensemble du parc","Parc de moins de 5 ans"),
+           (TypeZone %in% c("Départements","Régions","France")|(TypeZone=="Epci" & CodeZone %in% epci_ref$EPCI))) %>%
+      select(-Variable,-Indicateur,-Pourcent) %>%
+    spread(SousEnsemble,Valeur) %>%
+    mutate(Pourcent=100*`Parc de moins de 5 ans`/`Ensemble du parc`) %>%
+  ggplot()+
+  geom_segment(aes(x=Zone,xend=Zone,y=0,yend=Pourcent,color=TypeZone))+
+  geom_point(aes(x=Zone,y=Pourcent,fill=TypeZone),color="white",pch=21)+
+  theme_graph()+
+  coord_flip()+
+  scale_color_viridis_d(option = "inferno",end=.9,begin=.2)+
+  scale_fill_viridis_d(option = "inferno",end=.9,begin=.2)+
+  theme(legend.position = "none")+
+  labs(x="",y="",title="Poids du parc récent dans l'ensemble du parc social",caption=caption)
+```
