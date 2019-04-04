@@ -1,7 +1,12 @@
 # rrrpls
 
-rrrpls est un package pour permettre la lecture des données RPLS (Répertoire du Parc Locatif Social).
-Il permet de lire les données disponibles en opendata ou celles disponibles au sein de la sphère statistique publique.
+*rrrpls* est un package pour permettre la production d'un rapport régional sur les données RPLS (Répertoire du Parc Locatif Social).
+
+Il contient un template bookdown paramétrable par région et les fonctions nécessaires à la création des illustrations.
+
+Il nécessite pour l'instant l'utilisation d'un package interne à la sphère de la statistique publique contenant les données elle-même : `TidyRpls`.
+
+A terme, il permettra de se baser sur les données disponibles en opendata.
 
 ## Installation
 
@@ -11,18 +16,26 @@ Installation à partir de github :
 devtools::install_github("MaelTheuliere/rrrpls")
 ```
 
-## Exemple
+## Usage
 
-Pour l'instant, les seules données lisibles sont celles de 2017 géolocalisées.
+- Charger le package `TidyRpls` avec les données.
 
-``` r
-lire_rpls("geoloc2017_reg01.csv",annee=2017,geoloc=T,as_sf=T)
-```
+- Créez un document Rmarkdown à partir d'un template.
+
+- Renommez le fichier Rmd qui s'ouvre par défaut en `index.Rmd`
+
+- Changez les paramètres pour sélectionner votre région et les Epci sur lesquels vous voulez un zoom.
+
+- Lancez la compilation du bookdown
+
+- Intégrez vos analyses ;-)
+
+
 ## Feuille de route
 
-- Permettre le chargement des données rpls opendata
+- Permettre le chargement des données rpls opendata pour ouvrir le 
 
-- Charger les données rpls des autres millésimes
+- Charger les données rpls des précédents millésimes
 
-- Créer des sorties de valorisations standards sur les données
+- Créer un template `pagedown`
 
