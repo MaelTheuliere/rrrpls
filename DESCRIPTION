@@ -25,12 +25,12 @@ Imports:
     ggplot2,
     glue,
     hrbrthemes,
-    patchwork,
     rlang,
     tibble,
     tidyr,
     viridisLite
-Remotes: MaelTheuliere/COGiter
+Remotes: MaelTheuliere/COGiter,
+    thomasp85/patchwork
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 URL: https://github.com/MaelTheuliere/rrrpls
