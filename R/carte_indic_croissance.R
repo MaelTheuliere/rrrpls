@@ -26,6 +26,7 @@
 #' @importFrom ggplot2 labs
 #' @importFrom ggplot2 theme
 #' @importFrom glue glue
+#' @importFrom COGiter cog_df_to_list
 #' @encoding UTF-8
 
 carte_indic_croissance<-function(zoom_reg=F,
@@ -37,7 +38,7 @@ carte_indic_croissance<-function(zoom_reg=F,
     select(-Variable,-Indicateur,-Pourcent) %>%
     spread(SousEnsemble,Valeur) %>%
     mutate(part=100*`Parc de moins de 5 ans`/`Ensemble du parc`) %>%
-    COGiter::cog_df_to_list %>%
+    cog_df_to_list %>%
     .$epci %>%
     select(EPCI,NOM_EPCI,part)
 

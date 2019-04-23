@@ -34,6 +34,7 @@
 #' @importFrom ggplot2 coord_sf
 #' @importFrom ggplot2 labs
 #' @importFrom ggplot2 theme
+#' @importFrom COGiter cog_df_to_list
 #' @encoding UTF-8
 
 carte_indic<-function(indicateur,
@@ -53,7 +54,7 @@ carte_indic<-function(indicateur,
   dt<-indicateurs_rpls %>%
     filter(Indicateur==indicateur,
            SousEnsemble=="Ensemble du parc") %>%
-    COGiter::cog_df_to_list %>%
+    cog_df_to_list %>%
     .$epci
 
   bks<-getBreaks(dt %>% pull(!!var),method="q6") %>%
@@ -68,7 +69,7 @@ carte_indic<-function(indicateur,
   }
 
   dt<-indicateurs_rpls %>%
-    COGiter::cog_df_to_list %>%
+    cog_df_to_list %>%
     .$epci %>%
     filter(Indicateur==indicateur,
            SousEnsemble==sousensemble) %>%

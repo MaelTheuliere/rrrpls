@@ -32,8 +32,8 @@
 #' @importFrom ggplot2 ylim
 #' @importFrom ggplot2 theme
 #' @importFrom tibble tribble
+#' @importFrom COGiter cog_df_to_list
 #' @import patchwork
-#' @importFrom patchwork plot_layout
 #' @encoding UTF-8
 
 legende_carte_indic<-function(indicateur,
@@ -46,7 +46,7 @@ var=enquo(variable)
   dt<-indicateurs_rpls %>%
     filter(Indicateur==indicateur,
            SousEnsemble=="Ensemble du parc") %>%
-    COGiter::cog_df_to_list %>%
+    cog_df_to_list %>%
     .$epci
 
   bks<-getBreaks(dt %>% pull(!!var),method="q6") %>%
@@ -61,7 +61,7 @@ var=enquo(variable)
   }
 
   dt<-indicateurs_rpls %>%
-    COGiter::cog_df_to_list %>%
+    cog_df_to_list %>%
     .$epci %>%
     filter(Indicateur==indicateur,
            SousEnsemble=="Ensemble du parc") %>%
