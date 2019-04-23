@@ -17,7 +17,6 @@
 #' @importFrom rlang enquo
 #' @import magrittr
 #' @importFrom dplyr filter
-#' @importFrom COGiter cog_df_to_list
 #' @importFrom cartography getBreaks
 #' @importFrom rlang !!
 #' @importFrom dplyr pull
@@ -54,7 +53,7 @@ carte_indic<-function(indicateur,
   dt<-indicateurs_rpls %>%
     filter(Indicateur==indicateur,
            SousEnsemble=="Ensemble du parc") %>%
-    cog_df_to_list %>%
+    COGiter::cog_df_to_list %>%
     .$epci
 
   bks<-getBreaks(dt %>% pull(!!var),method="q6") %>%
@@ -69,7 +68,7 @@ carte_indic<-function(indicateur,
   }
 
   dt<-indicateurs_rpls %>%
-    cog_df_to_list %>%
+    COGiter::cog_df_to_list %>%
     .$epci %>%
     filter(Indicateur==indicateur,
            SousEnsemble==sousensemble) %>%

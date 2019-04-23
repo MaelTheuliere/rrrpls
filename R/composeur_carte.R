@@ -15,7 +15,6 @@
 #' @importFrom rlang enquo
 #' @importFrom rlang !!
 #' @import patchwork
-#' @importFrom patchwork plot_layout
 #' @encoding UTF-8
 
 composeur_carte<-function(indicateur,

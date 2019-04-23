@@ -1,15 +1,13 @@
 #' Carte pour rpls
 #'
-#' @param indicateur indicateur à cartographier
 #' @param zoom_reg booléen T si on veut la carte régional, F pour la carte national
-#' @param box vecteur des coordonnées du territore sur lequel zoomer
+#' @param box vecteur des coordonnées du territoire sur lequel zoomer
 #' @param g guide
 #' @return la fonction renvoie un graphique ggplot2
 #' @export
 #' @importFrom rlang enquo
 #' @import magrittr
 #' @importFrom dplyr filter
-#' @importFrom COGiter cog_df_to_list
 #' @importFrom cartography getBreaks
 #' @importFrom rlang !!
 #' @importFrom dplyr pull
@@ -39,7 +37,7 @@ carte_indic_croissance<-function(zoom_reg=F,
     select(-Variable,-Indicateur,-Pourcent) %>%
     spread(SousEnsemble,Valeur) %>%
     mutate(part=100*`Parc de moins de 5 ans`/`Ensemble du parc`) %>%
-    cog_df_to_list %>%
+    COGiter::cog_df_to_list %>%
     .$epci %>%
     select(EPCI,NOM_EPCI,part)
 

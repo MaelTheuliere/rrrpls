@@ -10,11 +10,9 @@ carte_indic_croissance(zoom_reg = F, box = bbox, g = guide)
 \arguments{
 \item{zoom_reg}{booléen T si on veut la carte régional, F pour la carte national}
 
-\item{box}{vecteur des coordonnées du territore sur lequel zoomer}
+\item{box}{vecteur des coordonnées du territoire sur lequel zoomer}
 
 \item{g}{guide}
-
-\item{indicateur}{indicateur à cartographier}
 }
 \value{
 la fonction renvoie un graphique ggplot2

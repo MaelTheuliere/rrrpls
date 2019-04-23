@@ -27,7 +27,9 @@ Imports:
     rlang,
     tibble,
     tidyr,
-    viridisLite
+    viridisLite,
+    COGiter,
+    patchwork
 Remotes: MaelTheuliere/COGiter,
     thomasp85/patchwork
 Roxygen: list(markdown = TRUE)

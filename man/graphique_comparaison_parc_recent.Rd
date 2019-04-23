@@ -15,8 +15,6 @@ graphique_comparaison_parc_recent(indicateur, variable = Pourcent,
 \item{title}{titre du graphique}
 
 \item{caption}{bas de page du graphique}
-
-\item{g}{guide}
 }
 \value{
 la fonction renvoie un graphique ggplot2

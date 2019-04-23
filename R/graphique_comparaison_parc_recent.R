@@ -4,7 +4,6 @@
 #' @param title titre du graphique
 #' @param caption bas de page du graphique
 #' @param variable variable à valoriser : poucentage ou valeur absolue
-#' @param g guide
 #' @return la fonction renvoie un graphique ggplot2
 #' @export
 #' @importFrom rlang enquo
@@ -27,7 +26,10 @@
 #' @importFrom ggplot2 theme
 #' @importFrom hrbrthemes theme_ipsum_rc
 
-graphique_comparaison_parc_recent<-function(indicateur,variable=Pourcent,title="",caption=""){
+graphique_comparaison_parc_recent<-function(indicateur,
+                                            variable=Pourcent,
+                                            title="",
+                                            caption=""){
 var<-enquo(variable)
   dfg_long <- df %>%
     filter(SousEnsemble %in% c("Ensemble du parc","Parc de moins de 5 ans"),
