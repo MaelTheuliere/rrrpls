@@ -7,7 +7,7 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 params:
-  region_code: "53"
+  region_code: "52"
   annee: "2018"
   region_nom: "Pays de la Loire"
   epci_ref: !r c("244400404","244400644","244900015","245300330","247200132","248500589","200071678","200071876","244400610","200071165")

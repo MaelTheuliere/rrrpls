@@ -1,6 +1,6 @@
 # Les loyer dans le parc social {#loyer_m2}
 
-```{r map_loyer_m2,fig.width=14,fig.height=20}
+```{r map_loyer_m2,fig.width=14,fig.height=10}
 p1<-carte_indic(indicateur="Loyer au m2",variable=Valeur)
 p2<-carte_indic(indicateur="Loyer au m2",variable=Valeur,zoom_reg = T)
 
