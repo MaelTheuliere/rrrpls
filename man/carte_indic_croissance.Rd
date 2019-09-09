@@ -5,9 +5,12 @@
 \alias{carte_indic_croissance}
 \title{Carte pour rpls}
 \usage{
-carte_indic_croissance(zoom_reg = F, box = bbox, g = guide)
+carte_indic_croissance(.data = indicateurs_rpls, zoom_reg = F,
+  na_recode = "Pas de parc récent", box = bbox, g = guide)
 }
 \arguments{
+\item{.data}{le dataframe en entrée}
+
 \item{zoom_reg}{booléen T si on veut la carte régional, F pour la carte national}
 
 \item{box}{vecteur des coordonnées du territoire sur lequel zoomer}

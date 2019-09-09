@@ -1,4 +1,4 @@
-bookdown::gitbook:
+drealdown::gitbook:
   css: style.css
   config:
     toc:

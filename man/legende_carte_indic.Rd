@@ -5,10 +5,13 @@
 \alias{legende_carte_indic}
 \title{Légende pour carte pour rpls}
 \usage{
-legende_carte_indic(indicateur, filtre_zero = F, zoom_reg = F,
-  variable = Pourcent, na_recode = "Pas de logements")
+legende_carte_indic(.data = indicateurs_rpls, indicateur,
+  filtre_zero = F, zoom_reg = F, variable = Pourcent,
+  na_recode = "Pas de logements")
 }
 \arguments{
+\item{.data}{le dataframe de départ}
+
 \item{indicateur}{indicateur à cartographier}
 
 \item{filtre_zero}{T si on veut ne pas utiliser les valeurs à zéro pour définir les classes de valeur}

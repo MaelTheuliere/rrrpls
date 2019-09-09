@@ -8,7 +8,7 @@ composeur_carte(indicateur="Taux de mobilité",
                 basdepage=NULL,
                 variable=Valeur,
                 filtre_zero=T,
-                na_recode="Pas de logements sociaux")
+                na_recode="Pas de logements")
 ```
 
 
@@ -23,5 +23,5 @@ composeur_carte(indicateur="Taux de vacance",
                 basdepage=NULL,
                 variable=Valeur,
                 filtre_zero=F,
-                na_recode="Pas de logements sociaux")
+                na_recode="Pas de logements")
 ```

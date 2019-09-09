@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "mael.theuliere@gmail.com")
 Description: What the package does (one paragraph).
-License: MIT
+License: MIT + file LICENCE
 Encoding: UTF-8
 LazyData: true
 Imports: 
@@ -29,9 +29,14 @@ Imports:
     tidyr,
     viridisLite,
     COGiter,
-    patchwork
+    patchwork,
+    furrr,
+    drealdown,
+    drealthemes
 Remotes: MaelTheuliere/COGiter,
     thomasp85/patchwork
+    local::/pkgs/drealdown
+    local::/pkgs/drealthemes
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 URL: https://github.com/MaelTheuliere/rrrpls

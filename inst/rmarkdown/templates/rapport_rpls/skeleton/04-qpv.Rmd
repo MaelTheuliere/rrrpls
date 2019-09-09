@@ -12,7 +12,7 @@ composeur_carte(indicateur="En QPV",
 
 
 ```{r comparaison_parc_recent_qpv,fig.width=14,fig.height=8}
-p4<-graphique_comparaison_parc_recent(indicateur="En QPV",title="Logements sociaux en QPV",caption=caption)
+p4<-graphique_comparaison_parc_recent(indicateur="En QPV",title="Part des logements sociaux en QPV",caption=caption)
 p4
 ```
 

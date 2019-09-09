@@ -5,13 +5,15 @@
 \alias{carte_indic}
 \title{Carte pour rpls}
 \usage{
-carte_indic(indicateur, zoom_reg = F,
+carte_indic(.data = indicateurs_rpls, indicateur, zoom_reg = F,
   sousensemble = "Ensemble du parc", legend = F, titre = NULL,
   soustitre = NULL, basdepage = NULL, filtre_zero = F,
   variable = Pourcent, na_recode = "Pas de logements", box = bbox,
   g = guide)
 }
 \arguments{
+\item{.data}{le dataframe de départ}
+
 \item{indicateur}{indicateur à cartographier}
 
 \item{zoom_reg}{booléen T si on veut la carte régional, F pour la carte national}

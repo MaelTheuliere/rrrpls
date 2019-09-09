@@ -1,5 +1,6 @@
 #' Graphique comparaison par récent pour rpls
 #'
+#' @param .data le dataframe de départ
 #' @param indicateur indicateur à cartographier
 #' @param title titre du graphique
 #' @param caption bas de page du graphique
@@ -15,6 +16,7 @@
 #' @importFrom forcats fct_drop
 #' @importFrom forcats fct_reorder2
 #' @importFrom rlang !!
+#' @importFrom rlang .data
 #' @importFrom dplyr pull
 #' @importFrom ggplot2 ggplot
 #' @importFrom ggplot2 geom_point
@@ -26,12 +28,13 @@
 #' @importFrom ggplot2 theme
 #' @importFrom hrbrthemes theme_ipsum_rc
 
-graphique_comparaison_parc_recent<-function(indicateur,
+graphique_comparaison_parc_recent<-function(.data= df,
+                                            indicateur,
                                             variable=Pourcent,
                                             title="",
                                             caption=""){
 var<-enquo(variable)
-  dfg_long <- df %>%
+  dfg_long <- .data %>%
     filter(SousEnsemble %in% c("Ensemble du parc","Parc de moins de 5 ans"),
            Indicateur==indicateur,
            (TypeZone %in% c("Départements","Régions","France")|(TypeZone=="Epci" & CodeZone %in% epci_ref$EPCI))) %>%
@@ -63,10 +66,10 @@ l<-ggplot(dt)+
                    xend=`Parc de moins de 5 ans`,
                    yend=1),
                color="grey",size=2,alpha=.7)+
-  geom_point(aes(x=`Ensemble du parc`,y=1),fill=viridis(6)[1],color=viridis(6)[1],size=3,stroke=1,shape=21,alpha=1)+
-  geom_point(aes(x=`Parc de moins de 5 ans`,y=1),fill="white",color=viridis(6)[1],size=3,stroke=1,shape=21)+
+  geom_point(aes(x=`Ensemble du parc`,y=1),fill=dreal_cols("secondary_active"),color=dreal_cols("secondary_active"),size=3,stroke=1,shape=21,alpha=1)+
+  geom_point(aes(x=`Parc de moins de 5 ans`,y=1),fill="white",color=dreal_cols("secondary_active"),size=3,stroke=1,shape=21)+
   theme_void()+
-  theme(plot.caption = element_text(size=16))+
+  theme(plot.caption = element_text(size=18))+
   annotate("text",
            x=c(min,
                max
@@ -87,18 +90,19 @@ p<-ggplot(dfg_large)+
                    xend=`Parc de moins de 5 ans`,
                    yend=Zone),
                color="grey",size=2,alpha=.7)+
-  geom_point(aes(x=`Ensemble du parc`,y=Zone),fill=viridis(6)[1],color=viridis(6)[1],size=3,stroke=1,shape=21,alpha=1)+
-  geom_point(aes(x=`Parc de moins de 5 ans`,y=Zone),fill="white",color=viridis(6)[1],size=3,stroke=1,shape=21)+
-  hrbrthemes::theme_ipsum_rc(grid="XY")+
-  xlim(0,NA)+
-  theme(legend.position = "bottom",
-        axis.text.y=element_text(size=18),
-        axis.text.x=element_text(size=18),
-        plot.caption = element_text(size=16),
-        plot.title = element_text(size=22),
-        plot.subtitle = element_text(size=18)
-  )+
-  labs(x="",y="",title=title)
+  geom_point(aes(x=`Ensemble du parc`,y=Zone),fill=dreal_cols("secondary_active"),color=dreal_cols("secondary_active"),size=3,stroke=1,shape=21,alpha=1)+
+  geom_point(aes(x=`Parc de moins de 5 ans`,y=Zone),fill="white",color=dreal_cols("secondary_active"),size=3,stroke=1,shape=21)+
+  scale_x_continuous(limits = c(0,NA))+
+  # hrbrthemes::theme_ipsum_rc(grid="XY")+
+  # theme(legend.position = "bottom",
+  #       axis.text.y=element_text(size=18),
+  #       axis.text.x=element_text(size=18),
+  #       plot.caption = element_text(size=16),
+  #       plot.title = element_text(size=22),
+  #       plot.subtitle = element_text(size=18)
+  # )+
+  theme_graph()+
+  labs(x="",y="",title=stringr::str_wrap(title,45))
 
 res<-p+l+plot_layout(ncol=1,heights=c(8,1))
 return(res)

@@ -2,3 +2,4 @@
 ^rrrpls\.Rproj$
 ^\.Rproj\.user$
 init.R
+^data-raw$

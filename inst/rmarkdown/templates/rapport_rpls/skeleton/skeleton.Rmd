@@ -27,11 +27,11 @@ library(glue)
 library(hrbrthemes)
 library(patchwork)
 library(purrr)
-library(ggbeeswarm)
 library(viridis)
 library(sf)
 library(cartography)
 library(TidyRpls)
+library(drealthemes)
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown','tidyverse','glue','hrbrthemes','patchwork','ggbeeswarm','viridis','sf','cartography','TidyRpls'
@@ -80,7 +80,8 @@ communes_epci_ref<-liste_zone %>%
   inner_join(epci_ref) %>% 
   select(DEPCOM=CodeZone,NOM_EPCI)
 
-caption<-glue("source : RPLS {params$annee} \n carte des epci au 1er janvier 2018")
+caption<-glue("source : RPLS {params$annee} \n carte des epci au 1er janvier 2019")
+caption_poids<-glue("source : RPLS {params$annee}, recencement de la population 2016 \n carte des epci au 1er janvier 2019")
 
 
 bbox <- epci_geo %>%

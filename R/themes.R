@@ -7,7 +7,7 @@
 #' @encoding UTF-8
 
 theme_carto<-function(){
-  theme_ipsum_rc()+
+  theme_dreal()+
     theme(plot.title = element_text(size=24),
           plot.subtitle = element_text(size=22),
           axis.text = element_blank(),
@@ -28,11 +28,11 @@ theme_carto<-function(){
 #' @importFrom ggplot2 theme
 
 theme_graph <-function(){
-  theme_ipsum()+
+  theme_dreal()+
   theme(plot.title = element_text(size=24),
         plot.subtitle = element_text(size=22),
         axis.text.y=element_text(size=18),
         axis.text.x=element_text(size=18),
-        plot.caption = element_text(size=16)
+        plot.caption = element_text(size=18)
   )
 }

@@ -5,11 +5,13 @@
 \alias{graph_repartition_par_date}
 \title{Graphique comparaison par date de construction pour rpls}
 \usage{
-graph_repartition_par_date(indicateur, titre = NULL,
+graph_repartition_par_date(.data = rpls, indicateur, titre = NULL,
   soustitre = "Par date de construction", basdepage = NULL,
   date_debut = 1950)
 }
 \arguments{
+\item{.data}{le dataframe de départ}
+
 \item{indicateur}{indicateur à cartographier}
 
 \item{titre}{titre du graphique}

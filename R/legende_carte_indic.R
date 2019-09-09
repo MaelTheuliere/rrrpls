@@ -1,5 +1,6 @@
 #' Légende pour carte pour rpls
 #'
+#' @param .data le dataframe de départ
 #' @param indicateur indicateur à cartographier
 #' @param filtre_zero T si on veut ne pas utiliser les valeurs à zéro pour définir les classes de valeur
 #' @param zoom_reg booléen T si on veut la carte régional, F pour la carte national
@@ -36,14 +37,15 @@
 #' @import patchwork
 #' @encoding UTF-8
 
-legende_carte_indic<-function(indicateur,
-                      filtre_zero=F,
-                      zoom_reg=F,
-                      variable=Pourcent,
-                      na_recode="Pas de logements"){
-var=enquo(variable)
+legende_carte_indic<-function(.data = indicateurs_rpls,
+                              indicateur,
+                              filtre_zero=F,
+                              zoom_reg=F,
+                              variable=Pourcent,
+                              na_recode="Pas de logements"){
+  var=enquo(variable)
 
-  dt<-indicateurs_rpls %>%
+  dt<-.data %>%
     filter(Indicateur==indicateur,
            SousEnsemble=="Ensemble du parc") %>%
     cog_df_to_list %>%
@@ -60,7 +62,7 @@ var=enquo(variable)
       unique(.)
   }
 
-  dt<-indicateurs_rpls %>%
+  dt<-.data %>%
     cog_df_to_list %>%
     .$epci %>%
     filter(Indicateur==indicateur,
@@ -70,17 +72,17 @@ var=enquo(variable)
 
 
 
-colors<-viridis(nlevels(dt$q))
+  colors<-dreal_pal("continuous")(nlevels(dt$q))
 
-if(zoom_reg==T){
-dt<-dt %>%
-  filter(EPCI %in% (epci %>%
-                      filter(str_detect(REGIONS_DE_L_EPCI,params$region_code)) %>%
-                      pull(EPCI))
-         )
-}
+  if(zoom_reg==T){
+    dt<-dt %>%
+      filter(EPCI %in% (epci %>%
+                          filter(str_detect(REGIONS_DE_L_EPCI,params$region_code)) %>%
+                          pull(EPCI))
+      )
+  }
 
-legend<-ggplot() +
+  legend<-ggplot() +
     geom_histogram(data=dt,aes(x=!!var,fill=q),breaks=bks) +
     scale_color_manual(values=colors)+
     scale_fill_manual(values=colors)+
@@ -92,17 +94,17 @@ legend<-ggplot() +
           axis.text.y=element_blank(),
           axis.text.x = element_text(hjust=0,size=14)
     )
-na<-tribble(~x,~y,
-            na_recode,.1) %>%
-  ggplot()+
-  geom_bar(aes(x=x,weight=y),color="light grey",fill="light grey")+
-  theme_minimal()+
-  theme(legend.position = "none",
-        panel.grid = element_blank(),
-        axis.text.y=element_blank(),
-        axis.text.x = element_text(size=14)
-  )+
-  labs(y="",x="")+
-  ylim(c(0,2))
-legend+na+plot_layout(widths=c(10,1))
+  na<-tribble(~x,~y,
+              na_recode,.1) %>%
+    ggplot()+
+    geom_bar(aes(x=x,weight=y),color="light grey",fill="light grey")+
+    theme_minimal()+
+    theme(legend.position = "none",
+          panel.grid = element_blank(),
+          axis.text.y=element_blank(),
+          axis.text.x = element_text(size=14)
+    )+
+    labs(y="",x="")+
+    ylim(c(0,2))
+  legend+na+plot_layout(widths=c(10,1))
 }

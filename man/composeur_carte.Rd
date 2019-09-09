@@ -5,12 +5,14 @@
 \alias{composeur_carte}
 \title{Composeur de carte pour rpls}
 \usage{
-composeur_carte(indicateur, titre = NULL, soustitre = NULL,
-  basdepage = NULL, filtre_zero = F, variable = Pourcent,
-  na_recode = "Pas de logements", parc_recent = T, box = bbox,
-  g = guide)
+composeur_carte(.data = indicateurs_rpls, indicateur, titre = NULL,
+  soustitre = NULL, basdepage = NULL, filtre_zero = F,
+  variable = Pourcent, na_recode = "Pas de logements",
+  parc_recent = T, box = bbox, g = guide)
 }
 \arguments{
+\item{.data}{le dataframe de départ}
+
 \item{indicateur}{indicateur à cartographier}
 
 \item{titre}{titre du graphique}

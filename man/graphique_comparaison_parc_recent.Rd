@@ -4,10 +4,12 @@
 \alias{graphique_comparaison_parc_recent}
 \title{Graphique comparaison par récent pour rpls}
 \usage{
-graphique_comparaison_parc_recent(indicateur, variable = Pourcent,
-  title = "", caption = "")
+graphique_comparaison_parc_recent(.data = df, indicateur,
+  variable = Pourcent, title = "", caption = "")
 }
 \arguments{
+\item{.data}{le dataframe de départ}
+
 \item{indicateur}{indicateur à cartographier}
 
 \item{variable}{variable à valoriser : poucentage ou valeur absolue}

@@ -13,7 +13,7 @@ composeur_carte(indicateur="DPE énergie classe A,B ou C",
 
 
 ```{r comparaison_parc_recent_dpe_energie,fig.width=14,fig.height=8}
-p_graphique_comparaison_parc_recent_dpe_energie<-graphique_comparaison_parc_recent(indicateur="DPE énergie classe A,B ou C",title="Logements sociaux avec un DPE énergie de classe A,B ou C",caption=caption)
+p_graphique_comparaison_parc_recent_dpe_energie<-graphique_comparaison_parc_recent(indicateur="DPE énergie classe A,B ou C",title="Part des logements sociaux avec un DPE énergie de classe A,B ou C",caption=caption)
 p_graphique_comparaison_parc_recent_dpe_energie
 ```
 
