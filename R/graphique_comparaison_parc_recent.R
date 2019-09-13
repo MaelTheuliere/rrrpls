@@ -2,7 +2,7 @@
 #'
 #' @param .data le dataframe de départ
 #' @param indicateur indicateur à cartographier
-#' @param title titre du graphique
+#' @param titre titre du graphique
 #' @param caption bas de page du graphique
 #' @param variable variable à valoriser : poucentage ou valeur absolue
 #' @return la fonction renvoie un graphique ggplot2
@@ -31,7 +31,7 @@
 graphique_comparaison_parc_recent<-function(.data= df,
                                             indicateur,
                                             variable=Pourcent,
-                                            title="",
+                                            titre="",
                                             caption=""){
 var<-enquo(variable)
   dfg_long <- .data %>%
@@ -92,7 +92,7 @@ p<-ggplot(dfg_large)+
                color="grey",size=2,alpha=.7)+
   geom_point(aes(x=`Ensemble du parc`,y=Zone),fill=dreal_cols("secondary_active"),color=dreal_cols("secondary_active"),size=3,stroke=1,shape=21,alpha=1)+
   geom_point(aes(x=`Parc de moins de 5 ans`,y=Zone),fill="white",color=dreal_cols("secondary_active"),size=3,stroke=1,shape=21)+
-  scale_x_continuous(limits = c(0,NA))+
+  scale_x_continuous(limits = c(0,NA),expand = c(0,0))+
   # hrbrthemes::theme_ipsum_rc(grid="XY")+
   # theme(legend.position = "bottom",
   #       axis.text.y=element_text(size=18),
@@ -102,7 +102,7 @@ p<-ggplot(dfg_large)+
   #       plot.subtitle = element_text(size=18)
   # )+
   theme_graph()+
-  labs(x="",y="",title=stringr::str_wrap(title,45))
+  labs(x="",y="",title=stringr::str_wrap(titre,45))
 
 res<-p+l+plot_layout(ncol=1,heights=c(8,1))
 return(res)

@@ -6,6 +6,7 @@
 #' @param soustitre sous-titre du graphique
 #' @param basdepage bas de page du graphique
 #' @param date_debut date de début pour l'analyse
+#' @param palette la palette de couleur à utiliser
 #' @return la fonction renvoie un graphique ggplot2
 #' @export
 #' @importFrom rlang enquo
@@ -34,25 +35,30 @@ graph_repartition_par_date <- function(.data = rpls,
                                        titre = NULL,
                                        soustitre = "Par date de construction",
                                        basdepage = NULL,
-                                       date_debut = 1950) {
+                                       date_debut = 1950,
+                                       palette = "discrete2") {
   var <- enquo(indicateur)
   .data %>%
     filter(construct_red > date_debut) %>%
-    select(!!var, construct_red, age) %>%
-    ggplot(aes(x = !!var, y = construct_red, fill = !!var, color = !!var)) +
-    geom_violin(scale = "width", adjust = 1) +
+    select(!!var, construct_red) %>%
+    group_by(construct_red,!!var) %>%
+    tally() %>%
+    ungroup() %>%
+    ggplot(aes(y = n, x = construct_red, fill = !!var, color = !!var)) +
+    geom_bar(stat="identity")+
     theme_graph() +
-    # scale_fill_viridis_d(option = "D") +
-    # scale_color_viridis_d(option = "D") +
-    scale_fill_dreal_d(palette = "discrete_long") +
-    scale_color_dreal_d(palette = "discrete_long") +
-    coord_flip() +
-    theme(legend.position = "none") +
+    scale_x_continuous(breaks=seq(1950,2020,10),expand = c(0,0))+
+    scale_fill_dreal_d(palette = palette) +
+    scale_color_dreal_d(palette = palette) +
+    theme(legend.position = "bottom") +
     labs(
       title = titre,
       subtitle = soustitre,
       y = "Date de construction",
       x = "",
+      fill = "",
+      color = "",
       caption = basdepage
     )
 }
+

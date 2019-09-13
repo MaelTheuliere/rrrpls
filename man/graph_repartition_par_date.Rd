@@ -7,7 +7,7 @@
 \usage{
 graph_repartition_par_date(.data = rpls, indicateur, titre = NULL,
   soustitre = "Par date de construction", basdepage = NULL,
-  date_debut = 1950)
+  date_debut = 1950, palette = "discrete2")
 }
 \arguments{
 \item{.data}{le dataframe de départ}
@@ -21,6 +21,8 @@ graph_repartition_par_date(.data = rpls, indicateur, titre = NULL,
 \item{basdepage}{bas de page du graphique}
 
 \item{date_debut}{date de début pour l'analyse}
+
+\item{palette}{la palette de couleur à utiliser}
 }
 \value{
 la fonction renvoie un graphique ggplot2

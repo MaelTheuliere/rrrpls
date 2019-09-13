@@ -5,7 +5,7 @@
 \title{Graphique comparaison par récent pour rpls}
 \usage{
 graphique_comparaison_parc_recent(.data = df, indicateur,
-  variable = Pourcent, title = "", caption = "")
+  variable = Pourcent, titre = "", caption = "")
 }
 \arguments{
 \item{.data}{le dataframe de départ}
@@ -14,7 +14,7 @@ graphique_comparaison_parc_recent(.data = df, indicateur,
 
 \item{variable}{variable à valoriser : poucentage ou valeur absolue}
 
-\item{title}{titre du graphique}
+\item{titre}{titre du graphique}
 
 \item{caption}{bas de page du graphique}
 }

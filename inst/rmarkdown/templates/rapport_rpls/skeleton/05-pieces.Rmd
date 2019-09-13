@@ -12,11 +12,11 @@ composeur_carte(indicateur="moins de 2 pièces",
 
 
 ```{r comparaison_parc_recent_pieces,fig.width=14,fig.height=8}
-p4<-graphique_comparaison_parc_recent(indicateur="moins de 2 pièces",title="Part des logements sociaux de 1 et 2 pièces",caption=caption)
+p4<-graphique_comparaison_parc_recent(indicateur="moins de 2 pièces",titre="Part des logements sociaux de 1 et 2 pièces",caption=caption)
 p4
 ```
 
-```{r fig.width=12,fig.height = 6}
+```{r fig.width=12,fig.height = 8}
 graph_repartition_par_date(indicateur=nbpiece_red,
                            titre="Répartition des logements par nombre de pièces")
 ```

@@ -11,11 +11,11 @@ composeur_carte(indicateur="Logements collectifs",
 ```
 
 ```{r comparaison_parc_recent_type_logement,fig.width=14,fig.height=8}
-p_comparaison_parc_recent_type_logement<-graphique_comparaison_parc_recent(indicateur="Part des logements collectifs",title="Logements sociaux collectifs",caption=caption)
+p_comparaison_parc_recent_type_logement<-graphique_comparaison_parc_recent(indicateur="Logements collectifs",titre="Logements sociaux collectifs",caption=caption)
 p_comparaison_parc_recent_type_logement
 ```
 
-```{r repartition_par_date_type_logement, fig.width=12,fig.height = 6}
+```{r repartition_par_date_type_logement, fig.width=12,fig.height = 8}
 graph_repartition_par_date(indicateur=typeconst_red,
                            titre="Répartition des logements individuels et collectifs")
 ```

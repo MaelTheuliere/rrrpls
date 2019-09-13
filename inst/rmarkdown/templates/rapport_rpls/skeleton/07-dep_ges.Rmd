@@ -12,12 +12,13 @@ composeur_carte(indicateur="DPE GES classe A,B ou C",
 
 
 ```{r comparaison_parc_recent_dpe_ges,fig.width=14,fig.height=8}
-p_graphique_comparaison_parc_recent_dpe_ges<-graphique_comparaison_parc_recent(indicateur="DPE GES classe A,B ou C",title="Part des logements sociaux avec un DPE GES de classe A,B ou C",caption=caption)
+p_graphique_comparaison_parc_recent_dpe_ges<-graphique_comparaison_parc_recent(indicateur="DPE GES classe A,B ou C",titre="Part des logements sociaux avec un DPE GES de classe A,B ou C",caption=caption)
 p_graphique_comparaison_parc_recent_dpe_ges
 ```
 
-```{r fig.width=12,fig.height = 6}
+```{r fig.width=12,fig.height = 8}
 graph_repartition_par_date(indicateur=dpeserre_red,
                            titre="Répartition des logements par DPE GES",
+                           palette = "discrete_long"
                            )
 ```

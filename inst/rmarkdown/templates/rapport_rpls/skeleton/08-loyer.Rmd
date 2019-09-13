@@ -1,7 +1,7 @@
 # Les loyer dans le parc social {#loyer_m2}
 
 ```{r map_loyer_m2,fig.width=14,fig.height=10}
-p1<-carte_indic(indicateur="Loyer au m2",variable=Valeur,zoom_reg = T,title="Loyer moyen au m2 dans le parc social au 1er janvier 2018")
+p1<-carte_indic(indicateur="Loyer au m2",variable=Valeur,zoom_reg = T,titre="Loyer moyen au m2 dans le parc social au 1er janvier 2018")
 p2<-carte_indic(indicateur="Loyer au m2",variable=Valeur)
 
 p5<-legende_carte_indic(indicateur="Loyer au m2",variable=Valeur)
@@ -11,6 +11,6 @@ p/p5+plot_layout(heights = c(20,1))
 
 
 ```{r comparaison_parc_recent_loyer_m2,fig.width=14,fig.height=8}
-p_graphique_comparaison_parc_recent_loyer_m2<-graphique_comparaison_parc_recent(indicateur="Loyer au m2",variable=Valeur,title="Loyer moyen dans le parc et le parc récent",caption=caption)
+p_graphique_comparaison_parc_recent_loyer_m2<-graphique_comparaison_parc_recent(indicateur="Loyer au m2",variable=Valeur,titre="Loyer moyen dans le parc et le parc récent",caption=caption)
 p_graphique_comparaison_parc_recent_loyer_m2
 ```
