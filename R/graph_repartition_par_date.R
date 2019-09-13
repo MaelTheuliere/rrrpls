@@ -41,16 +41,40 @@ graph_repartition_par_date <- function(.data = rpls,
   .data %>%
     filter(construct_red > date_debut) %>%
     select(!!var, construct_red) %>%
-    group_by(construct_red,!!var) %>%
+    group_by(construct_red, !!var) %>%
     tally() %>%
     ungroup() %>%
     ggplot(aes(y = n, x = construct_red, fill = !!var, color = !!var)) +
-    geom_bar(stat="identity")+
+    geom_bar(stat = "identity") +
     theme_graph() +
-    scale_x_continuous(breaks=seq(1950,2020,10),expand = c(0,0))+
+    scale_x_continuous(breaks = seq(1950, 2020, 10), expand = c(0, 0)) +
     scale_fill_dreal_d(palette = palette) +
     scale_color_dreal_d(palette = palette) +
     theme(legend.position = "bottom") +
+    guides(
+      color = guide_legend(
+        direction = "horizontal",
+        keyheight = unit(2, units = "mm"),
+        keywidth = unit(20, units = "mm"),
+        order = 1,
+        title.position = "right",
+        title.hjust = 0.5,
+        nrow = 1,
+        label.position = "bottom",
+        label.hjust = 0
+      ),
+      fill = guide_legend(
+        direction = "horizontal",
+        keyheight = unit(2, units = "mm"),
+        keywidth = unit(20, units = "mm"),
+        order = 1,
+        title.position = "right",
+        title.hjust = 0.5,
+        nrow = 1,
+        label.position = "bottom",
+        label.hjust = 0
+      )
+    ) +
     labs(
       title = titre,
       subtitle = soustitre,
@@ -61,4 +85,3 @@ graph_repartition_par_date <- function(.data = rpls,
       caption = basdepage
     )
 }
-

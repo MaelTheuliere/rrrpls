@@ -6,7 +6,7 @@
 \title{Carte pour rpls}
 \usage{
 carte_indic_croissance(.data = indicateurs_rpls, zoom_reg = F,
-  na_recode = "Pas de parc récent", box = bbox, g = guide)
+  na_recode = "Pas de parc récent", box = bbox)
 }
 \arguments{
 \item{.data}{le dataframe en entrée}
@@ -14,8 +14,6 @@ carte_indic_croissance(.data = indicateurs_rpls, zoom_reg = F,
 \item{zoom_reg}{booléen T si on veut la carte régional, F pour la carte national}
 
 \item{box}{vecteur des coordonnées du territoire sur lequel zoomer}
-
-\item{g}{guide}
 }
 \value{
 la fonction renvoie un graphique ggplot2

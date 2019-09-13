@@ -50,8 +50,7 @@ carte_indic<-function(.data = indicateurs_rpls,
                       filtre_zero=F,
                       variable=Pourcent,
                       na_recode="Pas de logements",
-                      box=bbox,
-                      g=guide) {
+                      box=bbox) {
   var=enquo(variable)
 
   dt<-.data %>%
@@ -96,7 +95,18 @@ carte_indic<-function(.data = indicateurs_rpls,
     geom_sf(color="white",size=.1) +
     scale_fill_manual(values=colors) +
     theme_carto()+
-    g
+    guides(colour=F,
+           alpha=F,
+           order=0,
+           fill=guide_legend(direction="horizontal",
+                             keyheight=unit(2,units="mm"),
+                             keywidth=unit(20,units="mm"),
+                             order=1,
+                             title.position="right",
+                             title.hjust=0.5,
+                             nrow=1,
+                             label.position="bottom",
+                             label.hjust=0))
 
   if (zoom_reg==F) {
     p<-p+

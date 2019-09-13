@@ -3,7 +3,6 @@
 #' @param .data le dataframe en entrée
 #' @param zoom_reg booléen T si on veut la carte régional, F pour la carte national
 #' @param box vecteur des coordonnées du territoire sur lequel zoomer
-#' @param g guide
 #' @return la fonction renvoie un graphique ggplot2
 #' @export
 #' @importFrom rlang enquo
@@ -33,8 +32,7 @@
 carte_indic_croissance<-function(.data=indicateurs_rpls,
                                  zoom_reg=F,
                                  na_recode="Pas de parc récent",
-                                 box=bbox,
-                                 g=guide) {
+                                 box=bbox) {
   dt<-.data %>%
     filter(Indicateur=="Nombre de logements sociaux",
            SousEnsemble %in% c("Ensemble du parc","Parc de moins de 5 ans")) %>%
@@ -67,7 +65,18 @@ carte_indic_croissance<-function(.data=indicateurs_rpls,
     geom_sf(color="white",size=.1) +
     scale_fill_manual(values=colors) +
     theme_carto()+
-    g
+    guides(colour=F,
+           alpha=F,
+           order=0,
+           fill=guide_legend(direction="horizontal",
+                             keyheight=unit(2,units="mm"),
+                             keywidth=unit(20,units="mm"),
+                             order=1,
+                             title.position="right",
+                             title.hjust=0.5,
+                             nrow=1,
+                             label.position="bottom",
+                             label.hjust=0))
 
 
   if (zoom_reg==F) {

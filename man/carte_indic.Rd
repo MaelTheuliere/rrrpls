@@ -8,8 +8,7 @@
 carte_indic(.data = indicateurs_rpls, indicateur, zoom_reg = F,
   sousensemble = "Ensemble du parc", legend = F, titre = NULL,
   soustitre = NULL, basdepage = NULL, filtre_zero = F,
-  variable = Pourcent, na_recode = "Pas de logements", box = bbox,
-  g = guide)
+  variable = Pourcent, na_recode = "Pas de logements", box = bbox)
 }
 \arguments{
 \item{.data}{le dataframe de départ}

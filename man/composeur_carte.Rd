@@ -8,7 +8,7 @@
 composeur_carte(.data = indicateurs_rpls, indicateur, titre = NULL,
   soustitre = NULL, basdepage = NULL, filtre_zero = F,
   variable = Pourcent, na_recode = "Pas de logements",
-  parc_recent = T, box = bbox, g = guide)
+  parc_recent = T, box = bbox)
 }
 \arguments{
 \item{.data}{le dataframe de départ}
@@ -30,8 +30,6 @@ composeur_carte(.data = indicateurs_rpls, indicateur, titre = NULL,
 \item{parc_recent}{booléen : T si on veut la carte sur le parc de moins de 5 ans}
 
 \item{box}{vecteur des coordonnées du territore sur lequel zoomer}
-
-\item{g}{guide}
 }
 \value{
 la fonction renvoie un graphique ggplot2

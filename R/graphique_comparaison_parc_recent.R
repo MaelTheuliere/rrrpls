@@ -93,14 +93,6 @@ p<-ggplot(dfg_large)+
   geom_point(aes(x=`Ensemble du parc`,y=Zone),fill=dreal_cols("secondary_active"),color=dreal_cols("secondary_active"),size=3,stroke=1,shape=21,alpha=1)+
   geom_point(aes(x=`Parc de moins de 5 ans`,y=Zone),fill="white",color=dreal_cols("secondary_active"),size=3,stroke=1,shape=21)+
   scale_x_continuous(limits = c(0,NA),expand = c(0,0))+
-  # hrbrthemes::theme_ipsum_rc(grid="XY")+
-  # theme(legend.position = "bottom",
-  #       axis.text.y=element_text(size=18),
-  #       axis.text.x=element_text(size=18),
-  #       plot.caption = element_text(size=16),
-  #       plot.title = element_text(size=22),
-  #       plot.subtitle = element_text(size=18)
-  # )+
   theme_graph()+
   labs(x="",y="",title=stringr::str_wrap(titre,45))
 

@@ -10,7 +10,6 @@
 #' @param na_recode libellé pour les valeur à NA de l'indicateur
 #' @param parc_recent booléen : T si on veut la carte sur le parc de moins de 5 ans
 #' @param box vecteur des coordonnées du territore sur lequel zoomer
-#' @param g guide
 #' @return la fonction renvoie un graphique ggplot2
 #' @export
 #' @importFrom rlang enquo
@@ -28,8 +27,7 @@ composeur_carte <- function(.data=indicateurs_rpls,
                             variable = Pourcent,
                             na_recode = "Pas de logements",
                             parc_recent = T,
-                            box = bbox,
-                            g = guide) {
+                            box = bbox) {
   var <- enquo(variable)
   p1 <- carte_indic(
     .data = .data,
@@ -39,8 +37,7 @@ composeur_carte <- function(.data=indicateurs_rpls,
     titre = titre,
     soustitre = soustitre,
     variable = !!var,
-    box = bbox,
-    g = guide
+    box = bbox
   )
   p2 <- carte_indic(
     .data = .data,
@@ -48,8 +45,7 @@ composeur_carte <- function(.data=indicateurs_rpls,
     filtre_zero = filtre_zero,
     zoom_reg = F,
     variable = !!var,
-    box = bbox,
-    g = guide
+    box = bbox
   )
   if (parc_recent) {
     p3 <- carte_indic(
@@ -60,8 +56,7 @@ composeur_carte <- function(.data=indicateurs_rpls,
       zoom_reg = T,
       soustitre = "Dans le parc récent",
       variable = !!var,
-      box = bbox,
-      g = guide
+      box = bbox
     )
     p4 <- carte_indic(
       .data = .data,
@@ -70,8 +65,7 @@ composeur_carte <- function(.data=indicateurs_rpls,
       filtre_zero = filtre_zero,
       zoom_reg = F,
       variable = !!var,
-      box = bbox,
-      g = guide
+      box = bbox
     )
   }
   p5 <- legende_carte_indic(

@@ -95,17 +95,5 @@ epci_geo <- epci_geo %>%
               mutate(reg_param=ifelse(str_detect(REGIONS_DE_L_EPCI,params$region_code),1,0)) %>% 
               select(EPCI,reg_param)
   ) 
-guide<-guides(colour=F,
-                  alpha=F,
-                  order=0,
-                  fill=guide_legend(direction="horizontal",
-                                    keyheight=unit(2,units="mm"),
-                                    keywidth=unit(20,units="mm"),
-                                    order=1,
-                                    title.position="right",
-                                    title.hjust=0.5,
-                                    nrow=1,
-                                    label.position="bottom",
-                                    label.hjust=0))
 
 ```
