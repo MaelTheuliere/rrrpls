@@ -1,12 +1,12 @@
 Package: rrrpls
-Title: Lecture des donnees RPLS (Repertoire du Parc Locatif Social)
+Title: Rapportage sur les donnees du Repertoire du Parc Locatif Social
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Maël",
            family = "Theulière",
            role = c("aut", "cre"),
            email = "mael.theuliere@gmail.com")
-Description: What the package does (one paragraph).
+Description: Permet de créer un rapport automatique sur le répertoire du parc locatif social pour toutes les région
 License: MIT + file LICENCE
 Encoding: UTF-8
 LazyData: true
