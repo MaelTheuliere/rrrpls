@@ -34,8 +34,6 @@ carte_indic(.data = indicateurs_rpls, indicateur, zoom_reg = F,
 \item{na_recode}{libellé pour les valeur à NA de l'indicateur}
 
 \item{box}{vecteur des coordonnées du territore sur lequel zoomer}
-
-\item{g}{guide}
 }
 \value{
 la fonction renvoie un graphique ggplot2

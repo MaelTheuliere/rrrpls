@@ -23,7 +23,6 @@ Imports:
     cartography,
     ggplot2,
     glue,
-    hrbrthemes,
     rlang,
     tibble,
     tidyr,
@@ -32,11 +31,13 @@ Imports:
     patchwork,
     furrr,
     drealdown,
-    drealthemes
+    drealthemes,
+    stats,
+    utils
 Remotes: MaelTheuliere/COGiter,
-    thomasp85/patchwork
-    local::/pkgs/drealdown
-    local::/pkgs/drealthemes
+    thomasp85/patchwork,
+    gitlab::dreal-datalab/drealdown,
+    gitlab::dreal-datalab/drealthemes
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 URL: https://github.com/MaelTheuliere/rrrpls

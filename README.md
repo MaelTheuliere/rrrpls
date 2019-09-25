@@ -13,18 +13,17 @@ A terme, il permettra de se baser sur les données disponibles en opendata.
 Installation à partir de github :
 
 ``` r
-devtools::install_github("MaelTheuliere/rrrpls")
+remotes::install_github("MaelTheuliere/rrrpls")
+remotes::install_gitlab("dreal-datalab/rrrpls")
 ```
 
 ## Usage
 
 - Charger le package `TidyRpls` avec les données.
 
-- Créez un document Rmarkdown à partir d'un template.
+- Créez un nouveau projet Rstudio et sélectionner `Publication RPLS` comme type de projet.
 
-- Renommez le fichier Rmd qui s'ouvre par défaut en `index.Rmd`
-
-- Changez les paramètres pour sélectionner votre région et les Epci sur lesquels vous voulez un zoom.
+- Changez les paramètres
 
 - Lancez la compilation du bookdown
 

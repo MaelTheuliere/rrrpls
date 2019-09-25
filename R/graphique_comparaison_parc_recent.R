@@ -26,7 +26,6 @@
 #' @importFrom ggplot2 xlim
 #' @importFrom ggplot2 labs
 #' @importFrom ggplot2 theme
-#' @importFrom hrbrthemes theme_ipsum_rc
 
 graphique_comparaison_parc_recent<-function(.data= df,
                                             indicateur,

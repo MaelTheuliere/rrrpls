@@ -12,7 +12,6 @@
 #' @param variable variable à valoriser : poucentage ou valeur absolue
 #' @param na_recode libellé pour les valeur à NA de l'indicateur
 #' @param box vecteur des coordonnées du territore sur lequel zoomer
-#' @param g guide
 #' @return la fonction renvoie un graphique ggplot2
 #' @export
 #' @importFrom rlang enquo

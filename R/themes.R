@@ -2,7 +2,7 @@
 #'
 #' @return la fonction renvoie un theme
 #' @export
-#' @importFrom hrbrthemes theme_ipsum_rc
+#' @importFrom drealthemes theme_dreal
 #' @importFrom ggplot2 theme
 #' @encoding UTF-8
 
@@ -24,7 +24,7 @@ theme_carto<-function(){
 #'
 #' @return la fonction renvoie un theme
 #' @export
-#' @importFrom hrbrthemes theme_ipsum_rc
+#' @importFrom drealthemes theme_dreal
 #' @importFrom ggplot2 theme
 
 theme_graph <-function(){

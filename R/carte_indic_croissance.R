@@ -2,6 +2,7 @@
 #'
 #' @param .data le dataframe en entrée
 #' @param zoom_reg booléen T si on veut la carte régional, F pour la carte national
+#' @param na_recode chaine de caractères, le libellé qui s'affichera sur la carte pour le valeurs manquantes
 #' @param box vecteur des coordonnées du territoire sur lequel zoomer
 #' @return la fonction renvoie un graphique ggplot2
 #' @export

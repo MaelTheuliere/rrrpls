@@ -13,6 +13,8 @@ carte_indic_croissance(.data = indicateurs_rpls, zoom_reg = F,
 
 \item{zoom_reg}{booléen T si on veut la carte régional, F pour la carte national}
 
+\item{na_recode}{chaine de caractères, le libellé qui s'affichera sur la carte pour le valeurs manquantes}
+
 \item{box}{vecteur des coordonnées du territoire sur lequel zoomer}
 }
 \value{
