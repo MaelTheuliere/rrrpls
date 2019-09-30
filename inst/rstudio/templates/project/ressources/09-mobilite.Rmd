@@ -1,14 +1,17 @@
 # Taux de mobilité dans le parc {#mobilite}
 
 ```{r map_mobilite,fig.width=14,fig.height=10}
-composeur_carte(indicateur="Taux de mobilité",
-                titre="Taux de mobilité dans le parc social",
-                soustitre="En %",
-                parc_recent=F,
-                basdepage=NULL,
-                variable=Valeur,
-                filtre_zero=T,
-                na_recode="Pas de logements")
+composeur_carte(
+  .data = indicateurs_rpls,
+  indicateur = "Taux de mobilité",
+  titre = "Taux de mobilité dans le parc social",
+  soustitre = "En %",
+  parc_recent = F,
+  basdepage = NULL,
+  variable = Valeur,
+  filtre_zero = T,
+  na_recode = "Pas de logements"
+)
 ```
 
 
@@ -16,12 +19,15 @@ composeur_carte(indicateur="Taux de mobilité",
 # Taux de vacance dans le parc {#vacance}
 
 ```{r map_vacance,fig.width=14,fig.height=10}
-composeur_carte(indicateur="Taux de vacance",
-                titre="Taux de vacance dans le parc social",
-                soustitre="En %",
-                parc_recent=F,
-                basdepage=NULL,
-                variable=Valeur,
-                filtre_zero=F,
-                na_recode="Pas de logements")
+composeur_carte(
+  .data = indicateurs_rpls,
+  indicateur = "Taux de vacance",
+  titre = "Taux de vacance dans le parc social",
+  soustitre = "En %",
+  parc_recent = F,
+  basdepage = NULL,
+  variable = Valeur,
+  filtre_zero = F,
+  na_recode = "Pas de logements"
+)
 ```

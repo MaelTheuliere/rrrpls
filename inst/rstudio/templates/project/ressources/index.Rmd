@@ -14,80 +14,77 @@ description: "Une description du parc locatif social en région `r params$region
 
 Ce document est une synthèse de l'état du parc social en `r params$annee` en `r params$region_nom`.
 
-```{r include=FALSE}
+```{r library, include=FALSE}
 library(COGiter)
 library(rrrpls)
 library(tidyverse)
 library(glue)
 library(patchwork)
 library(purrr)
-library(viridis)
 library(sf)
 library(cartography)
 library(TidyRpls)
 library(drealthemes)
+options(knitr.kable.NA = "s")
+```
+
+
+```{r bib, include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown','tidyverse','glue','patchwork','ggbeeswarm','viridis','sf','cartography','TidyRpls'
-), 'packages.bib')
-knitr::opts_chunk$set(echo = F,warning = F,error = F,message = F,
-                      fig.width=12,fig.height = 6,
-                      width=100,cache=F)
-options(knitr.kable.NA="s")
-nom<-glue("indicateurs_rpls_{params$annee}")
-indicateurs_rpls<-get(nom)
-rm(list=nom)
-nom<-glue("rpls_{params$annee}")
-rpls<-get(nom)
-rm(list=nom)
-df<-filtrer_cog(indicateurs_rpls,reg=params$region_code,garder_supra = ">") %>% filter(CodeZone != "FRMETRO")
-rpls<-rpls %>% 
-  inner_join(communes %>% 
-                            filter(REG==params$region_code)) %>% 
-    mutate(nbpiece_red=fct_collapse(nbpiece_red,
-                                   `Moins de 2 pièces`=c("1","2"),
-                                   `3 et 4 pièces`=c("3","4"),group_other=T) %>%
-             fct_recode(`5 pièces ou plus`="Other"),
-           typeconst_red=fct_collapse(typeconst_red,
-                                      `Collectif`=c("C","E"),
-                                      Individuel=c("I")),
-           dpeenergie_red=fct_explicit_na(dpeenergie_red,na_level = "Inconnu"),
-           dpeserre_red=fct_explicit_na(dpeserre_red,na_level = "Inconnu"),
-           qpv_red=fct_recode(qpv_red,`En QPV`="1",`Hors QPV`="2")
-           )
-             
+  .packages(), "bookdown", "knitr", "rmarkdown", "tidyverse", "glue", "patchwork","purrr", "viridis", "sf", "cartography","drealthemes"), "packages.bib")
+knitr::opts_chunk$set(
+  echo = F, warning = F, error = F, message = F,
+  fig.width = 12, fig.height = 6,
+  width = 100, cache = F
+)
+```
 
 
+```{r filtrer, include=FALSE}
+nom <- glue("indicateurs_rpls_{params$annee}")
+indicateurs_rpls <- get(nom)
+rm(list = nom)
+nom <- glue("rpls_par_date_{params$annee}")
+rpls_par_date <- get(nom)
+rm(list = nom)
+df <- filtrer_cog(indicateurs_rpls, reg = params$region_code, garder_supra = ">") %>%
+  filter(CodeZone != "FRMETRO")
 
-epci_ref<-epci %>% 
-  filter(str_detect(REGIONS_DE_L_EPCI,params$region_code),NATURE_EPCI %in% c("ME","CU")) %>% 
-  select(EPCI,NOM_EPCI)
+rpls_par_date <- rpls_par_date %>%
+  inner_join(communes %>%
+    filter(REG == params$region_code))
+```
 
-if (length(params$epci_ref)>0) {
-epci_ref<-epci %>% 
-  filter(EPCI %in% params$epci_ref) %>% 
-  select(EPCI,NOM_EPCI)
+
+```{r geo, include=FALSE}
+epci_ref <- epci %>%
+  filter(str_detect(REGIONS_DE_L_EPCI, params$region_code), NATURE_EPCI %in% c("ME", "CU")) %>%
+  select(EPCI, NOM_EPCI)
+
+if (length(params$epci_ref) > 0) {
+  epci_ref <- epci %>%
+    filter(EPCI %in% params$epci_ref) %>%
+    select(EPCI, NOM_EPCI)
 }
 
-communes_epci_ref<-liste_zone %>% 
-  filter(TypeZone=="Communes") %>% 
-  inner_join(epci_ref) %>% 
-  select(DEPCOM=CodeZone,NOM_EPCI)
-
-caption<-glue("source : RPLS {params$annee} \n carte des epci au 1er janvier 2019")
-caption_poids<-glue("source : RPLS {params$annee}, recencement de la population 2016 \n carte des epci au 1er janvier 2019")
-
-
-bbox <- epci_geo %>%
-  inner_join(epci %>% 
-              filter(str_detect(REGIONS_DE_L_EPCI,params$region_code))
-  ) %>% 
-  st_bbox()
-
 epci_geo <- epci_geo %>%
-  left_join(epci %>% 
-              mutate(reg_param=ifelse(str_detect(REGIONS_DE_L_EPCI,params$region_code),1,0)) %>% 
-              select(EPCI,reg_param)
-  ) 
+  left_join(epci %>%
+    mutate(reg_param = ifelse(str_detect(REGIONS_DE_L_EPCI, params$region_code), 1, 0)) %>%
+    select(EPCI, reg_param))
 
+communes_epci_ref <- liste_zone %>%
+  filter(TypeZone == "Communes") %>%
+  inner_join(epci_ref) %>%
+  select(DEPCOM = CodeZone, NOM_EPCI)
+bbox <- epci_geo %>%
+  inner_join(epci %>%
+    filter(str_detect(REGIONS_DE_L_EPCI, params$region_code))) %>%
+  st_bbox()
+```
+
+
+```{r caption, include=FALSE}
+caption <- glue("source : RPLS {params$annee} \n carte des epci au 1er janvier 2019")
+caption_poids <- glue("source : RPLS {params$annee}, recencement de la population 2016 \n carte des epci au 1er janvier 2019")
 ```

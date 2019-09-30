@@ -30,7 +30,7 @@
 #' @importFrom ggplot2 theme
 #' @encoding UTF-8
 
-graph_repartition_par_date <- function(.data = rpls,
+graph_repartition_par_date <- function(.data = rpls_par_date,
                                        indicateur,
                                        titre = NULL,
                                        soustitre = "Par date de construction",
@@ -40,9 +40,9 @@ graph_repartition_par_date <- function(.data = rpls,
   var <- enquo(indicateur)
   .data %>%
     filter(construct_red > date_debut) %>%
-    select(!!var, construct_red) %>%
+    select(!!var, construct_red,n) %>%
     group_by(construct_red, !!var) %>%
-    tally() %>%
+    summarise(n=sum(n)) %>%
     ungroup() %>%
     ggplot(aes(y = n, x = construct_red, fill = !!var, color = !!var)) +
     geom_bar(stat = "identity") +
