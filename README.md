@@ -19,20 +19,20 @@ remotes::install_gitlab("dreal-datalab/rrrpls")
 
 ## Usage
 
-- Charger le package `TidyRpls` avec les données.
+- Créez un nouveau projet Rstudio et sélectionner `Publication RPLS` comme type de projet;
 
-- Créez un nouveau projet Rstudio et sélectionner `Publication RPLS` comme type de projet.
+- Changez les paramètres ;
 
-- Changez les paramètres
+- complétez les champs auteurs et date dans index.Rmd ;
 
-- Lancez la compilation du bookdown
+- complétez la liste des epci de référence sur lesquels vous voulez un zoom dans les graphiques ;
+
+- Lancez la compilation du bookdown ;
 
 - Intégrez vos analyses ;-)
 
 
 ## Feuille de route
-
-- Permettre le chargement des données rpls opendata pour ouvrir le 
 
 - Charger les données rpls des précédents millésimes
 
