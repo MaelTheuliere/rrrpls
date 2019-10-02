@@ -5,9 +5,9 @@
 \alias{graph_repartition_par_date}
 \title{Graphique comparaison par date de construction pour rpls}
 \usage{
-graph_repartition_par_date(.data = rpls, indicateur, titre = NULL,
-  soustitre = "Par date de construction", basdepage = NULL,
-  date_debut = 1950, palette = "discrete2")
+graph_repartition_par_date(.data = rpls_par_date, indicateur,
+  titre = NULL, soustitre = "Par date de construction",
+  basdepage = NULL, date_debut = 1950, palette = "discrete2")
 }
 \arguments{
 \item{.data}{le dataframe de départ}
