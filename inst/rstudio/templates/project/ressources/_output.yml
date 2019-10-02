@@ -5,8 +5,7 @@ drealdown::gitbook:
       before: |
         <li><a href="./">Le parc social en 2018</a></li>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    download: ["pdf", "epub"]
+        <li><a href="https://gitlab.com/dreal-datalab/rrrpls" target="blank">Code source</a></li>
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
