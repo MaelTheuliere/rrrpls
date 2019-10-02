@@ -3,8 +3,6 @@ Binding: rrrpls_skeleton
 OpenFiles: README.md, _bookdown.yml, _output.yml, index.Rmd
 Icon: rpls.png
 
-
-
 Parameter: annee
 Widget: SelectInput
 Label: Selectionner l'année
@@ -12,17 +10,10 @@ Fields: 2018
 Default: 2018
 Position: left
 
-
-Parameter: region_code
+Parameter: nom_region
 Widget: SelectInput
-Label: Selectionner le code région
-Fields: 11,52,53
-Default: 52
-Position: left
-
-Parameter: region_nom
-Widget: TextInput
-Label: Ecrire le nom de la région tel qu'il apparaitra dans la publication
+Label: Sélectionner le nom de votre région
 Default: Pays de la Loire
+Fields:Auvergne-Rhône-Alpes,Bourgogne-Franche-Comté,Bretagne,Centre-Val de Loire,Corse,Guadeloupe,Guyane,Hauts-de-France,Île-de-France,La Réunion,Martinique,Mayotte,Normandie,Nouvelle-Aquitaine,Occitanie,Pays de la Loire,Provence-Alpes-Côte d'Azur
 Position: right
 

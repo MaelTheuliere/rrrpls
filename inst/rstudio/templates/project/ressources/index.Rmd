@@ -6,13 +6,13 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-title: "Le parc locatif social en `r params$region_nom` au 1er janvier `r params$annee`"
+title: "Le parc locatif social en `r params$nom_region` au 1er janvier `r params$annee`"
 description: "Une description du parc locatif social en région `r params$region_nom`"
 ---
 
 # Introduction 
 
-Ce document est une synthèse de l'état du parc social en `r params$annee` en `r params$region_nom`.
+Ce document est une synthèse de l'état du parc social en `r params$annee` en `r params$nom_region`.
 
 ```{r library, include=FALSE}
 library(COGiter)
@@ -48,18 +48,22 @@ rm(list = nom)
 nom <- glue("rpls_par_date_{params$annee}")
 rpls_par_date <- get(nom)
 rm(list = nom)
-df <- filtrer_cog(indicateurs_rpls, reg = params$region_code, garder_supra = ">") %>%
-  filter(CodeZone != "FRMETRO")
+code_region <- filter(regions,NOM_REG==params$nom_region) %>% 
+  pull(REG) %>% 
+  as.character()
+df <- filtrer_cog(indicateurs_rpls, reg = code_region, garder_supra = ">") %>%
+  filter(CodeZone != "FRMETRO") %>% 
+  mutate(TypeZone=fct_relevel(TypeZone,"Communes","Epci","Départements","Régions","France"))
 
 rpls_par_date <- rpls_par_date %>%
   inner_join(communes %>%
-    filter(REG == params$region_code))
+    filter(REG == code_region))
 ```
 
 
 ```{r geo, include=FALSE}
 epci_ref <- epci %>%
-  filter(str_detect(REGIONS_DE_L_EPCI, params$region_code), NATURE_EPCI %in% c("ME", "CU")) %>%
+  filter(str_detect(REGIONS_DE_L_EPCI, code_region), NATURE_EPCI %in% c("ME", "CU")) %>%
   select(EPCI, NOM_EPCI)
 
 if (length(params$epci_ref) > 0) {
@@ -68,9 +72,16 @@ if (length(params$epci_ref) > 0) {
     select(EPCI, NOM_EPCI)
 }
 
+# si pas d'epci de référence précisé, on garde les 10 epci ayant le plus de résidences principales
+if (length(params$epci_ref) == 0) {
+epci_ref <- df %>% 
+  filter(Indicateur=="Nombre de résidences principales",TypeZone=="Epci",SousEnsemble=="Ensemble du parc") %>%
+  top_n(n=10,wt=Valeur) %>% 
+  select(EPCI=CodeZone,NOM_EPCI=Zone)
+}
 epci_geo <- epci_geo %>%
   left_join(epci %>%
-    mutate(reg_param = ifelse(str_detect(REGIONS_DE_L_EPCI, params$region_code), 1, 0)) %>%
+    mutate(reg_param = ifelse(str_detect(REGIONS_DE_L_EPCI, code_region), 1, 0)) %>%
     select(EPCI, reg_param))
 
 communes_epci_ref <- liste_zone %>%
@@ -79,7 +90,7 @@ communes_epci_ref <- liste_zone %>%
   select(DEPCOM = CodeZone, NOM_EPCI)
 bbox <- epci_geo %>%
   inner_join(epci %>%
-    filter(str_detect(REGIONS_DE_L_EPCI, params$region_code))) %>%
+    filter(str_detect(REGIONS_DE_L_EPCI, code_region))) %>%
   st_bbox()
 ```
 

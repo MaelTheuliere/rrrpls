@@ -29,13 +29,13 @@ rrrpls_skeleton = function(path,...) {
   text <- lapply(seq_along(dots), function(i) {
     key <- names(dots)[[i]]
     val <- dots[[i]]
-    paste0("\t",key, ": ", val)
+    paste0("  ",key, ": ", "\"",val, "\"")
   })
 
   # collect into single text string
   contents <- paste("params:",
                     paste(text, collapse = "\n"),
-                    "\tepci_ref: !r c(\"244400404\",\"244400644\",\"244900015\",\"245300330\",\"247200132\",\"248500589\",\"200071678\",\"200071876\",\"244400610\",\"200071165\")",
+                    "  epci_ref: !r c(\"244400404\",\"244400644\",\"244900015\",\"245300330\",\"247200132\",\"248500589\",\"200071678\",\"200071876\",\"244400610\",\"200071165\")",
                     sep = "\n")
   # write to index.Rmd file
   conn <- file.path(path,"index.Rmd")
