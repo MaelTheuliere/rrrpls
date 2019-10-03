@@ -23,7 +23,6 @@ library(patchwork)
 library(purrr)
 library(sf)
 library(cartography)
-library(TidyRpls)
 library(drealthemes)
 options(knitr.kable.NA = "s")
 ```
