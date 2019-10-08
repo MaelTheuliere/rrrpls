@@ -1,24 +1,24 @@
-# Taux de mobilité dans le parc {#mobilite}
+# Taux de vacance dans le parc {#vacance}
 
-```{r map_mobilite,fig.width=14,fig.height=9}
+```{r map_vacance,fig.width=14,fig.height=9}
 composeur_carte(
   .data = indicateurs_rpls,
-  indicateur = "Taux de mobilité",
-  titre = "Taux de mobilité dans le parc social",
+  indicateur = "Taux de vacance",
+  titre = "Taux de vacance dans le parc social",
   soustitre = "En %",
   parc_recent = F,
   basdepage = NULL,
   variable = Valeur,
-  filtre_zero = T,
+  filtre_zero = F,
   na_recode = "Pas de logements"
 )
 ```
 
-```{r graph_mobilite, fig.align="right",fig.width=12,fig.height=6}
+```{r graph_vacance, fig.align="right",fig.width=12,fig.height=6}
 df %>%
   filter(
     SousEnsemble %in% c("Ensemble du parc"),
-    Indicateur == "Taux de mobilité",
+    Indicateur == "Taux de vacance",
     (TypeZone %in% c("Départements", "Régions", "France") | (TypeZone == "Epci" & CodeZone %in% epci_ref$EPCI))
   ) %>%
   ggplot() +
@@ -29,9 +29,5 @@ df %>%
   scale_color_dreal_d() +
   scale_fill_dreal_d() +
   theme(legend.position = "none") +
-  labs(x = "", y = "", title = str_wrap("Taux de mobilité dans l'ensemble du parc", 30), caption = caption)
-
+  labs(x = "", y = "", title = str_wrap("Taux de vacance dans l'ensemble du parc", 30), caption = caption)
 ```
-
-
-
