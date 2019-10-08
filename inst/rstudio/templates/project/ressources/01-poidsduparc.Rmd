@@ -21,8 +21,8 @@ df %>%
     (TypeZone %in% c("Départements", "Régions", "France") | (TypeZone == "Epci" & CodeZone %in% epci_ref$EPCI))
   ) %>%
   ggplot() +
-  geom_segment(aes(x = Zone, xend = Zone, y = 0, yend = Pourcent, color = TypeZone)) +
-  geom_point(aes(x = Zone, y = Pourcent, fill = TypeZone), color = "white", pch = 21) +
+  geom_segment(aes(x = Zone, xend = Zone, y = 0, yend = Pourcent, color = TypeZone),size=1.5) +
+  geom_point(aes(x = Zone, y = Pourcent, fill = TypeZone), color = "white", pch = 21,size=4) +
   theme_graph() +
   coord_flip() +
   scale_color_dreal_d() +
