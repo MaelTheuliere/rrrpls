@@ -1,6 +1,6 @@
 # Le poids du parc social dans l'ensemble du parc {#poidsduparc}
 
-```{r map_poids,fig.width=12,fig.height=7}
+```{r map_poids,fig.width=14,fig.height=9}
 composeur_carte(
   .data = indicateurs_rpls,
   indicateur = "Nombre de logements sociaux",

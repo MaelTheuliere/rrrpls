@@ -1,6 +1,6 @@
 # La croissance du parc social  {#croissanceduparc}
 
-```{r map_poids_recent,fig.width=12,fig.height=6}
+```{r map_poids_recent,fig.width=14,fig.height=9}
 p_croissance <- carte_indic_croissance(
   .data = indicateurs_rpls,
   zoom_reg = T,
