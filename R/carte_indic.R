@@ -38,96 +38,124 @@
 #' @importFrom COGiter cog_df_to_list
 #' @encoding UTF-8
 
-carte_indic<-function(.data = indicateurs_rpls,
-                      indicateur,
-                      zoom_reg=F,
-                      sousensemble="Ensemble du parc",
-                      legend=F,
-                      titre=NULL,
-                      soustitre=NULL,
-                      basdepage=NULL,
-                      filtre_zero=F,
-                      variable=Pourcent,
-                      na_recode="Pas de logements",
-                      box=bbox) {
-  var=enquo(variable)
+carte_indic <- function(.data = indicateurs_rpls,
+                        indicateur,
+                        zoom_reg = F,
+                        sousensemble = "Ensemble du parc",
+                        legend = F,
+                        titre = NULL,
+                        soustitre = NULL,
+                        basdepage = NULL,
+                        filtre_zero = F,
+                        variable = Pourcent,
+                        na_recode = "Pas de logements",
+                        box = bbox) {
+  var <- enquo(variable)
 
-  dt<-.data %>%
-    filter(Indicateur==indicateur,
-           SousEnsemble=="Ensemble du parc") %>%
-    cog_df_to_list %>%
+  dt <- .data %>%
+    filter(
+      Indicateur == indicateur,
+      SousEnsemble == "Ensemble du parc"
+    ) %>%
+    cog_df_to_list() %>%
     .$epci
 
-  bks<-getBreaks(dt %>% pull(!!var),method="q6") %>%
+  bks <- getBreaks(dt %>% pull(!!var), method = "q6") %>%
     unique(.)
 
   if (filtre_zero) {
-    bks<-getBreaks(dt %>%
-                     filter(!!var>0) %>%
-                     pull(!!var),
-                   method="q6") %>%
+    bks <- getBreaks(dt %>%
+      filter(!!var > 0) %>%
+      pull(!!var),
+    method = "q6"
+    ) %>%
       unique(.)
   }
 
-  dt<-.data %>%
-    cog_df_to_list %>%
+  dt <- .data %>%
+    cog_df_to_list() %>%
     .$epci %>%
-    filter(Indicateur==indicateur,
-           SousEnsemble==sousensemble) %>%
-    mutate(q=cut(!!var,breaks=bks,labels=round(bks[1:length(bks)-1],1),include.lowest = TRUE) %>%
-             fct_explicit_na(na_recode) %>%
-             fct_relevel(na_recode)
-    )
+    filter(
+      Indicateur == indicateur,
+      SousEnsemble == sousensemble
+    ) %>%
+    mutate(q = cut(!!var, breaks = bks, labels = round(bks[1:length(bks) - 1], 1), include.lowest = TRUE) %>%
+      fct_explicit_na(na_recode) %>%
+      fct_relevel(na_recode))
 
 
 
-  colors<-dreal_pal("continuous")(nlevels(dt$q))
+  colors <- dreal_pal("continuous")(nlevels(dt$q))
 
-  if (na_recode %in% levels(dt$q)){
-    colors<-c("light grey",dreal_pal("continuous")(nlevels(dt$q)-1))
+  if (na_recode %in% levels(dt$q)) {
+    colors <- c("light grey", dreal_pal("continuous")(nlevels(dt$q) - 1))
   }
 
-  p<-  epci_geo %>%
-    inner_join(dt
-    ) %>%
-    ggplot() +
-    geom_sf(color="white",size=.1) +
-    scale_fill_manual(values=colors) +
-    theme_carto()+
-    guides(colour=F,
-           alpha=F,
-           order=0,
-           fill=guide_legend(direction="horizontal",
-                             keyheight=unit(2,units="mm"),
-                             keywidth=unit(20,units="mm"),
-                             order=1,
-                             title.position="right",
-                             title.hjust=0.5,
-                             nrow=1,
-                             label.position="bottom",
-                             label.hjust=0))
+  data_map <- epci_geo %>%
+    inner_join(dt)
 
-  if (zoom_reg==F) {
-    p<-p+
-      annotate("rect",xmin = box[1],xmax=box[3],ymin = box[2],ymax=box[4],
-               fill="white",alpha=0.4)+
-      coord_sf(datum=NA) +
-      aes(fill=q)+
-      labs(fill=NULL)
+  if (zoom_reg == F) {
+    map <- data_map %>%
+      ggplot() +
+      annotation_map_tile(zoom = 7, cachedir = "data", type = "cartolight") +
+      geom_sf(aes(fill = q), color = "white", size = .1) +
+      geom_sf(data = region, alpha = 0, color = "black", size = .3, linetype = "longdash") +
+      scale_fill_manual(values = colors) +
+      theme_carto() +
+      guides(
+        colour = F,
+        alpha = F,
+        order = 0,
+        fill = guide_legend(
+          direction = "horizontal",
+          keyheight = unit(2, units = "mm"),
+          keywidth = unit(20, units = "mm"),
+          order = 1,
+          title.position = "right",
+          title.hjust = 0.5,
+          nrow = 1,
+          label.position = "bottom",
+          label.hjust = 0
+        )
+      ) +
+      annotate("rect",
+        xmin = box[1], xmax = box[3], ymin = box[2], ymax = box[4],
+        fill = "white", alpha = 0.4
+      ) +
+      coord_sf(datum = NA) +
+      labs(fill = NULL)
   }
   else {
-    p<-p +
-      coord_sf(xlim = c(box[1],box[3]),ylim = c(box[2],box[4]),datum=NA) +
-      aes(fill=q,alpha=reg_param) +
-      scale_alpha(range=c(.3,1)) +
-      labs(title=stringr::str_wrap(titre,50),subtitle=soustitre,fill=NULL,caption=basdepage)
+    map <- data_map %>%
+      ggplot() +
+      annotation_map_tile(zoom = 8, cachedir = "data", type = "cartolight") +
+      geom_sf(aes(fill = q, alpha = reg_param), color = "white", size = .1) +
+      geom_sf(data = region, alpha = 0, color = "black", size = .3, linetype = "longdash") +
+      scale_fill_manual(values = colors) +
+      theme_carto() +
+      guides(
+        colour = F,
+        alpha = F,
+        order = 0,
+        fill = guide_legend(
+          direction = "horizontal",
+          keyheight = unit(2, units = "mm"),
+          keywidth = unit(20, units = "mm"),
+          order = 1,
+          title.position = "right",
+          title.hjust = 0.5,
+          nrow = 1,
+          label.position = "bottom",
+          label.hjust = 0
+        )
+      ) +
+      coord_sf(xlim = c(box[1], box[3]), ylim = c(box[2], box[4]), datum = NA) +
+      scale_alpha(range = c(.3, 1)) +
+      labs(title = stringr::str_wrap(titre, 50), subtitle = soustitre, fill = NULL, caption = basdepage)
   }
-  if (legend==F){
-    p<-p +
+  if (legend == F) {
+    map <- map +
       theme(legend.position = "none")
   }
-  return(p)
+  return(map)
 }
-
-
-

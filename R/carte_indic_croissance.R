@@ -59,11 +59,16 @@ carte_indic_croissance<-function(.data=indicateurs_rpls,
   }
 
 
-  p<-  epci_geo %>%
+  data_map <-  epci_geo %>%
     inner_join(dt
-    ) %>%
+    )
+  if (zoom_reg == F) {
+
+  map <- data_map %>%
     ggplot() +
-    geom_sf(color="white",size=.1) +
+    annotation_map_tile(zoom = 7, cachedir = "data", type = "cartolight") +
+    geom_sf(color="white",size=.1,aes(fill=q)) +
+    geom_sf(data = region, alpha = 0, color = "black", size = .3, linetype = "longdash") +
     scale_fill_manual(values=colors) +
     theme_carto()+
     guides(colour=F,
@@ -77,23 +82,37 @@ carte_indic_croissance<-function(.data=indicateurs_rpls,
                              title.hjust=0.5,
                              nrow=1,
                              label.position="bottom",
-                             label.hjust=0))
+                             label.hjust=0))+
+    annotate("rect",xmin = box[1],xmax=box[3],ymin = box[2],ymax=box[4],
+                                                            fill="white",alpha=0.4)+
+    coord_sf(datum=NA) +
+    theme(legend.position = "none")
 
+}
 
-  if (zoom_reg==F) {
-    p<-p+
-      annotate("rect",xmin = box[1],xmax=box[3],ymin = box[2],ymax=box[4],
-               fill="white",alpha=0.4)+
-      coord_sf(datum=NA) +
-      aes(fill=q) +
-      theme(legend.position = "none")
-  }
   else {
-    p<-p +
+    map <- data_map %>%
+      ggplot() +
+      annotation_map_tile(zoom = 7, cachedir = "data", type = "cartolight") +
+      geom_sf(color="white",size=.1,aes(fill=q,alpha=reg_param)) +
+      geom_sf(data = region, alpha = 0, color = "black", size = .3, linetype = "longdash") +
+      scale_fill_manual(values=colors) +
+      theme_carto()+
+      guides(colour=F,
+             alpha=F,
+             order=0,
+             fill=guide_legend(direction="horizontal",
+                               keyheight=unit(2,units="mm"),
+                               keywidth=unit(20,units="mm"),
+                               order=1,
+                               title.position="right",
+                               title.hjust=0.5,
+                               nrow=1,
+                               label.position="bottom",
+                               label.hjust=0))+
       coord_sf(xlim = c(box[1],box[3]),ylim = c(box[2],box[4]),datum=NA) +
-      aes(fill=q,alpha=reg_param) +
       scale_alpha(range=c(.3,1)) +
       labs(title=str_wrap(glue("Poids du parc récent dans l'ensemble du parc social au 1er janvier {params$annee}"),50),subtitle="En %",fill="")
   }
-  return(p)
+  return(map)
 }

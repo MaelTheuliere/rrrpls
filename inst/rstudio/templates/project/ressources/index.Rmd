@@ -24,6 +24,7 @@ library(purrr)
 library(sf)
 library(cartography)
 library(drealthemes)
+library(ggspatial)
 options(knitr.kable.NA = "s")
 ```
 
@@ -33,7 +34,7 @@ options(knitr.kable.NA = "s")
 knitr::write_bib(c(
   .packages(), "bookdown", "knitr", "rmarkdown", "tidyverse", "glue", "patchwork","purrr", "viridis", "sf", "cartography","drealthemes"), "packages.bib")
 knitr::opts_chunk$set(
-  echo = F, warning = F, error = F, message = F,
+  echo = F, warning = F, error = F, message = F,progress = F,
   fig.width = 12, fig.height = 6,
   width = 100, cache = F
 )
@@ -87,9 +88,13 @@ communes_epci_ref <- liste_zone %>%
   filter(TypeZone == "Communes") %>%
   inner_join(epci_ref) %>%
   select(DEPCOM = CodeZone, NOM_EPCI)
-bbox <- epci_geo %>%
+epci_region <- epci_geo %>%
   inner_join(epci %>%
-    filter(str_detect(REGIONS_DE_L_EPCI, code_region))) %>%
+    filter(str_detect(REGIONS_DE_L_EPCI, code_region))) %>% 
+  summarise(funs(sum),do_union=T)
+region <- regions_geo %>% 
+  filter(REG == code_region)
+bbox <- epci_region %>%
   st_bbox()
 ```
 
