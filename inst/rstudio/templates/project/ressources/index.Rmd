@@ -100,6 +100,6 @@ bbox <- epci_region %>%
 
 
 ```{r caption, include=FALSE}
-caption <- glue("source : RPLS {params$annee} \n carte des epci au 1er janvier 2019")
-caption_poids <- glue("source : RPLS {params$annee}, recencement de la population 2016 \n carte des epci au 1er janvier 2019")
+caption <- glue("source : RPLS {params$annee} \n carte des epci au 1er janvier 2019 \n Parc récent : logements rentrés dans le patrimoine des bailleurs depuis 2013")
+caption_poids <- glue("source : RPLS {params$annee}, recencement de la population 2016 \n carte des epci au 1er janvier 2019 \n Parc récent : logements rentrés dans le patrimoine des bailleurs depuis 2013")
 ```

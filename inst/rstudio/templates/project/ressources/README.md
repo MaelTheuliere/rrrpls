@@ -1,3 +1,5 @@
+Attention : travaux en cours. A n'utiliser qu'à vos risques et périls pour l'instant.
+
 Etape de création :
 
 - compléter les champs auteurs et date dans index.Rmd
