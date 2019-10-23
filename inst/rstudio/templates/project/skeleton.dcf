@@ -14,6 +14,6 @@ Parameter: nom_region
 Widget: SelectInput
 Label: Sélectionner le nom de votre région
 Default: Pays de la Loire
-Fields:Auvergne-Rhône-Alpes,Bourgogne-Franche-Comté,Bretagne,Centre-Val de Loire,Corse,Guadeloupe,Guyane,Hauts-de-France,Île-de-France,La Réunion,Martinique,Mayotte,Normandie,Nouvelle-Aquitaine,Occitanie,Pays de la Loire,Provence-Alpes-Côte d'Azur
+Fields:Auvergne-Rhône-Alpes,Bourgogne-Franche-Comté,Bretagne,Centre-Val de Loire,Corse,Grand-Est,Guadeloupe,Guyane,Hauts-de-France,Île-de-France,La Réunion,Martinique,Mayotte,Normandie,Nouvelle-Aquitaine,Occitanie,Pays de la Loire,Provence-Alpes-Côte d'Azur
 Position: right
 
