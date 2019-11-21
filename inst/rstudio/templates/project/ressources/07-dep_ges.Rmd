@@ -3,8 +3,8 @@
 ```{r map_dep_ges,fig.width=14,fig.height=20}
 composeur_carte(
   .data = indicateurs_rpls,
-  indicateur = "DPE GES classe A,B ou C",
-  titre = "Part des logements sociaux avec DPE GES A,B ou C au 1er janvier 2018",
+  indicateur = "DPE GES classe A, B ou C",
+  titre = "Part des logements sociaux avec DPE GES A, B ou C au 1er janvier 2018",
   soustitre = "En %",
   parc_recent = T,
   basdepage = NULL,
@@ -17,7 +17,7 @@ composeur_carte(
 ```{r comparaison_parc_recent_dpe_ges,fig.width=14,fig.height=8}
 p_graphique_comparaison_parc_recent_dpe_ges <- graphique_comparaison_parc_recent(
   .data = df,
-  indicateur = "DPE GES classe A,B ou C", titre = "Part des logements sociaux avec un DPE GES de classe A,B ou C", caption = caption
+  indicateur = "DPE GES classe A, B ou C", titre = "Part des logements sociaux avec un DPE GES de classe A, B ou C", caption = caption
 )
 p_graphique_comparaison_parc_recent_dpe_ges
 ```
