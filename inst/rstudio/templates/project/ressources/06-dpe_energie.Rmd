@@ -25,7 +25,7 @@ p_graphique_comparaison_parc_recent_dpe_energie
 ```{r fig.width=12,fig.height = 8}
 graph_repartition_par_date(
   .data = rpls_par_date,
-  indicateur = dpeenergie_red,
+  indicateur = dpeenergie,
   titre = "Répartition des logements par DPE énergie",
   palette = "discrete_long"
 )

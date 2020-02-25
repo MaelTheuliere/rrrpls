@@ -24,7 +24,7 @@ df %>%
     SousEnsemble %in% c("Ensemble du parc", "Parc de moins de 5 ans"),
     (TypeZone %in% c("Départements", "Régions", "France") | (TypeZone == "Epci" & CodeZone %in% epci_ref$EPCI))
   ) %>%
-  select(-Variable, -Indicateur, -Pourcent) %>%
+  select(TypeZone,CodeZone,Zone,Indicateur,Valeur,SousEnsemble) %>%
   spread(SousEnsemble, Valeur) %>%
   mutate(Pourcent = 100 * `Parc de moins de 5 ans` / `Ensemble du parc`) %>%
   ggplot() +

@@ -6,8 +6,8 @@ Icon: rpls.png
 Parameter: annee
 Widget: SelectInput
 Label: Selectionner l'année
-Fields: 2018
-Default: 2018
+Fields: 2019
+Default: 2019
 Position: left
 
 Parameter: nom_region

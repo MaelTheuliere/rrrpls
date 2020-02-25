@@ -4,6 +4,8 @@ rrrpls_file = function(...) {
   system.file(..., package = 'rrrpls', mustWork = TRUE)
 }
 
+#' @importFrom xfun read_utf8
+#' @importFrom xfun write_utf8
 
 
 rrrpls_skeleton = function(path,...) {
@@ -22,8 +24,8 @@ rrrpls_skeleton = function(path,...) {
 
   # add book_filename to _bookdown.yml and default to the base path name
   f = file.path(path, '_bookdown.yml')
-  x = xfun::read_utf8(f)
-  xfun::write_utf8(c(sprintf('book_filename: "%s"', basename(path)), x), f)
+  x = read_utf8(f)
+  write_utf8(c(sprintf('book_filename: "%s"', basename(path)), x), f)
   # collect inputs and paste together as 'Parameter: Value'
   dots <- list(...)
   text <- lapply(seq_along(dots), function(i) {
@@ -39,9 +41,9 @@ rrrpls_skeleton = function(path,...) {
                     sep = "\n")
   # write to index.Rmd file
   conn <- file.path(path,"index.Rmd")
-  text <- xfun::read_utf8(conn)
+  text <- read_utf8(conn)
   mytext <- c(text[1:8],contents,text[(8+1):length(text)])
-  xfun::write_utf8(mytext, conn, sep="\n")
+  write_utf8(mytext, conn, sep="\n")
 
 
 

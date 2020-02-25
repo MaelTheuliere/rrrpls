@@ -32,6 +32,8 @@
 #' @importFrom ggplot2 labs
 #' @importFrom ggplot2 ylim
 #' @importFrom ggplot2 theme
+#' @importFrom drealthemes dreal_pal
+#' @importFrom stringr str_detect
 #' @importFrom tibble tribble
 #' @importFrom COGiter cog_df_to_list
 #' @import patchwork

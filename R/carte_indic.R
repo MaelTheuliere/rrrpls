@@ -35,7 +35,10 @@
 #' @importFrom ggplot2 coord_sf
 #' @importFrom ggplot2 labs
 #' @importFrom ggplot2 theme
+#' @importFrom ggplot2 guide_legend
 #' @importFrom COGiter cog_df_to_list
+#' @importFrom drealthemes dreal_pal
+#' @importFrom ggspatial annotation_map_tile
 #' @encoding UTF-8
 
 carte_indic <- function(.data = indicateurs_rpls,
@@ -91,7 +94,7 @@ carte_indic <- function(.data = indicateurs_rpls,
     colors <- c("light grey", dreal_pal("continuous")(nlevels(dt$q) - 1))
   }
 
-  data_map <- epci_geo %>%
+  data_map <- COGiter::epci_geo %>%
     inner_join(dt)
 
   if (zoom_reg == F) {

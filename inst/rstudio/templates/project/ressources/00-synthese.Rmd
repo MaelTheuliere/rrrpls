@@ -1,0 +1,125 @@
+# Synthese
+
+
+```{r  map, fig.height=8, echo=F, message= F, warning=F}
+carte_synthese()
+
+```
+
+
+<br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="newrow">
+  <div class="col-left-3">
+  <center>
+  <span class="chiffres">`r parc_hlm()` </span>
+
+  <span class="libelle">Logements HLM </span>
+
+  <span class="chiffres">`r evo_parc_hlm()` </span>
+
+  <span class="libelle">par rapport à 2018 </span>
+
+  </center>
+
+  </div>
+
+  <div class="col-left-9">
+
+```{r,top_epci,echo=F,message= F,warning=F}
+graphique_synthese_parc_epci()
+```
+
+</div>
+  </div>
+
+  <div class="newrow">
+  <div class="col-left-9">
+
+```{r graph_parc,echo=F,fig.height=4,fig.width=12}
+graphique_synthese_taux_hlm()
+```
+
+</div>
+  <div class="col-left-3">
+  <center>
+
+  <span class="chiffres">`r pourcent_parc_hlm()` </span>
+
+  <span class="libelle">des résidences principales </span>
+
+  </center>
+
+  </div>
+  </div>
+
+  <div class="newrow">
+  <div class="col-left-3">
+  <center>
+
+  <span class="chiffres">`r pourcent_collectif()` </span>
+
+  <span class="libelle">de logements collectifs </span>
+
+  </center>
+
+  </div>
+  <div class="col-left-9">
+
+```{r graph_collectif,echo=F,fig.height=4,fig.width=12}
+graphique_synthese_collectif()
+```
+
+</div>
+  </div>
+
+  <div class="newrow">
+  <div class="col-left-9">
+
+```{r graph_qpv,echo=F,fig.height=4,fig.width=12}
+graphique_synthese_taux_qpv()
+```
+
+</div>
+  <div class="col-left-3">
+  <center>
+
+  <span class="chiffres">`r pourcent_qpv()` </span>
+
+  <span class="libelle">de logements en QPV</span>
+  </center>
+
+  </div>
+  </div>
+
+  <div class="newrow">
+
+  <div class="col-left-3">
+  <center>
+
+  <span class="chiffres">`r loyer_m2()` </span>
+
+  <span class="libelle">Loyer moyen dans le parc social</span>
+  </center>
+
+  </div>
+
+  <div class="col-left-9">
+
+```{r graph_loyer,echo=F,fig.height=4,fig.width=12}
+graphique_synthese_loyer()
+```
+
+</div>
+
+  </div>
+

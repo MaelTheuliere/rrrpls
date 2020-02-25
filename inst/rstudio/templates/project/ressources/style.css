@@ -12,3 +12,16 @@ pre {
 pre code {
   white-space: inherit;
 }
+
+.chiffres {
+  font-size: 2.667rem;
+  font-weight: 600;
+  color: #00bebe;
+  font-family: "Roboto";
+}
+
+.libelle {
+  font-size: 2rem;
+  font-weight: 300;
+  font-family: "Roboto";
+}

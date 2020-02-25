@@ -25,6 +25,9 @@ library(sf)
 library(cartography)
 library(drealthemes)
 library(ggspatial)
+library(scales)
+library(waffle)
+library(ggrepel)
 options(knitr.kable.NA = "s")
 ```
 
@@ -100,6 +103,8 @@ bbox <- epci_region %>%
 
 
 ```{r caption, include=FALSE}
-caption <- glue("source : RPLS {params$annee} \n carte des epci au 1er janvier 2019 \n Parc récent : logements rentrés dans le patrimoine des bailleurs depuis 2013")
-caption_poids <- glue("source : RPLS {params$annee}, recencement de la population 2016 \n carte des epci au 1er janvier 2019 \n Parc récent : logements rentrés dans le patrimoine des bailleurs depuis 2013")
+
+annee_recente <- as.numeric(params$annee)-5
+caption <- glue("source : RPLS {params$annee} \n carte des epci au 1er janvier 2019 \n Parc récent : logements rentrés dans le patrimoine des bailleurs depuis {annee_recente}")
+caption_poids <- glue("source : RPLS {params$annee}, recencement de la population 2016 \n carte des epci au 1er janvier 2019 \n Parc récent : logements rentrés dans le patrimoine des bailleurs depuis {annee_recente}")
 ```

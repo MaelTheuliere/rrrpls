@@ -4,6 +4,9 @@
 #' @export
 #' @importFrom drealthemes theme_dreal
 #' @importFrom ggplot2 theme
+#' @importFrom ggplot2 element_blank
+#' @importFrom ggplot2 element_rect
+#' @importFrom ggplot2 element_text
 #' @encoding UTF-8
 
 theme_carto<-function(){
@@ -26,6 +29,8 @@ theme_carto<-function(){
 #' @export
 #' @importFrom drealthemes theme_dreal
 #' @importFrom ggplot2 theme
+#' @importFrom ggplot2 element_text
+#' @encoding UTF-8
 
 theme_graph <-function(){
   theme_dreal()+

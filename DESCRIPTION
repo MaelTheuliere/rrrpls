@@ -22,6 +22,7 @@ Imports:
     stringr,
     cartography,
     ggplot2,
+    ggrepel,
     ggspatial,
     glue,
     rlang,
@@ -34,7 +35,10 @@ Imports:
     drealdown,
     drealthemes,
     stats,
-    utils
+    scales,
+    utils,
+    waffle,
+    xfun
 Remotes: MaelTheuliere/COGiter,
     thomasp85/patchwork,
     gitlab::dreal-datalab/drealdown,

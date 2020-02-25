@@ -1,6 +1,8 @@
 library(tidyverse)
-library(TidyRpls)
-indicateurs_rpls_2018<-TidyRpls::indicateurs_rpls_2018 %>% filter(TypeZone != "Communes")
-rpls_par_date_2018 <- TidyRpls::rpls_par_date_2018
-use_data(indicateurs_rpls_2018, overwrite = T, internal = F,compress = "xz")
-use_data(rpls_par_date_2018, overwrite = T, internal = F,compress = "xz")
+load('../TidyRpls/data/indicateurs_rpls_2019.rda')
+load('../TidyRpls/data/rpls_par_date_2019.rda')
+
+indicateurs_rpls_2019<-indicateurs_rpls_2019 %>% filter(TypeZone != "Communes")
+
+use_data(indicateurs_rpls_2019, overwrite = T, internal = F,compress = "xz")
+use_data(rpls_par_date_2019, overwrite = T, internal = F,compress = "xz")

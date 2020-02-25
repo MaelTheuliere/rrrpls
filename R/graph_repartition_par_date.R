@@ -13,6 +13,9 @@
 #' @import magrittr
 #' @importFrom dplyr filter
 #' @importFrom dplyr select
+#' @importFrom dplyr group_by
+#' @importFrom dplyr summarise
+#' @importFrom dplyr ungroup
 #' @importFrom tidyr spread
 #' @importFrom dplyr mutate
 #' @importFrom forcats fct_drop
@@ -28,6 +31,7 @@
 #' @importFrom ggplot2 coord_flip
 #' @importFrom ggplot2 labs
 #' @importFrom ggplot2 theme
+#' @importFrom ggplot2 guide_legend
 #' @encoding UTF-8
 
 graph_repartition_par_date <- function(.data = rpls_par_date,
@@ -39,12 +43,12 @@ graph_repartition_par_date <- function(.data = rpls_par_date,
                                        palette = "discrete2") {
   var <- enquo(indicateur)
   .data %>%
-    filter(construct_red > date_debut) %>%
-    select(!!var, construct_red,n) %>%
-    group_by(construct_red, !!var) %>%
+    filter(construct > date_debut) %>%
+    select(!!var, construct,n) %>%
+    group_by(construct, !!var) %>%
     summarise(n=sum(n)) %>%
     ungroup() %>%
-    ggplot(aes(y = n, x = construct_red, fill = !!var, color = !!var)) +
+    ggplot(aes(y = n, x = construct, fill = !!var, color = !!var)) +
     geom_bar(stat = "identity") +
     theme_graph() +
     scale_x_continuous(breaks = seq(1950, 2020, 10), expand = c(0, 0)) +

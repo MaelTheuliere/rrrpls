@@ -17,6 +17,7 @@
 #' @importFrom forcats fct_explicit_na
 #' @importFrom forcats fct_relevel
 #' @importFrom drealthemes scale_fill_dreal_d
+#' @importFrom drealthemes dreal_pal
 #' @importFrom dplyr inner_join
 #' @importFrom ggplot2 ggplot
 #' @importFrom ggplot2 geom_sf
@@ -26,6 +27,9 @@
 #' @importFrom ggplot2 coord_sf
 #' @importFrom ggplot2 labs
 #' @importFrom ggplot2 theme
+#' @importFrom ggplot2 guide_legend
+#' @importFrom stringr str_wrap
+#' @importFrom ggspatial annotation_map_tile
 #' @importFrom glue glue
 #' @importFrom COGiter cog_df_to_list
 #' @encoding UTF-8
@@ -37,7 +41,7 @@ carte_indic_croissance<-function(.data=indicateurs_rpls,
   dt<-.data %>%
     filter(Indicateur=="Nombre de logements sociaux",
            SousEnsemble %in% c("Ensemble du parc","Parc de moins de 5 ans")) %>%
-    select(-Variable,-Indicateur,-Pourcent) %>%
+    select(TypeZone,CodeZone,Zone,Indicateur,Valeur,SousEnsemble) %>%
     spread(SousEnsemble,Valeur) %>%
     mutate(part=100*`Parc de moins de 5 ans`/`Ensemble du parc`) %>%
     cog_df_to_list %>%
@@ -59,7 +63,7 @@ carte_indic_croissance<-function(.data=indicateurs_rpls,
   }
 
 
-  data_map <-  epci_geo %>%
+  data_map <-  COGiter::epci_geo %>%
     inner_join(dt
     )
   if (zoom_reg == F) {
