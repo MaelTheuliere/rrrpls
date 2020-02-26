@@ -9,6 +9,9 @@ euro_m2_format_ggplot(x)
 \arguments{
 \item{x}{un nombre}
 }
+\value{
+chaine de caractère
+}
 \description{
 Formatage d'un nombre en montant en euros sans le m2 en exposant
 }

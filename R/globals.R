@@ -4,6 +4,6 @@ utils::globalVariables(c("indicateurs_rpls","Pourcent",
                          "Pourcent", "REGIONS_DE_L_EPCI", "SousEnsemble", "TypeZone",
                          "Valeur","Valeur_2018", "Valeur_texte", "Variable", "Zone", "bbox", "code_region",
                          "construct","epci", "epci_geo", "epci_ref", "n","params", "parc_non_hlm", "part", "reg_param", "region",
-                         "rpls_par_date", "signe", "tmp2","x", "y"))
+                         "rpls_par_date", "signe", "tmp2","x", "y","evolution"))
 
 

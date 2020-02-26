@@ -18,11 +18,8 @@
 \item{Pourcent}{Pourcentage de la valeur de l'indicateur par rapport au nombre de logements sociaux total en 2018}
 }}
 \source{
-RPLS 2018.
+RPLS 2019
 }
 \description{
 Indicateurs précalculés au territoire
-}
-\seealso{
-\link{rrrpls}
 }

@@ -6,10 +6,12 @@ Authors@R:
            family = "Theulière",
            role = c("aut", "cre"),
            email = "mael.theuliere@gmail.com")
-Description: Permet de créer un rapport automatique sur le répertoire du parc locatif social pour toutes les région
+Description: rrrpls permet de créer un rapport automatique sur le répertoire du parc locatif social pour toutes les régions de France métropolitaine et les DROM.
 License: MIT + file LICENCE
 Encoding: UTF-8
 LazyData: true
+Depends: 
+    R (>= 2.10)
 Imports: 
     rmarkdown,
     bookdown,
@@ -27,7 +29,7 @@ Imports:
     glue,
     rlang,
     tibble,
-    tidyr,
+    tidyr (>= 1.0.0),
     viridisLite,
     COGiter,
     patchwork,

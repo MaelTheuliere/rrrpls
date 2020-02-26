@@ -16,11 +16,8 @@
 \item{n}{nombre de logements}
 }}
 \source{
-RPLS 2019.
+RPLS 2019
 }
 \description{
 Données rpls aggrégés par date et communes
-}
-\seealso{
-\link{rrrpls}
 }

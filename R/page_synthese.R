@@ -129,11 +129,6 @@ carte_synthese <- function(.data = indicateurs_rpls,
   return(map)
 }
 
-pourcent_format <- number_format(accuracy = .1, decimal.mark = ",", suffix = " %")
-
-euro_m2_format <- number_format(accuracy = .1, decimal.mark = ",", suffix = " € / m<sup>2</sup>")
-euro_m2_format_ggplot <- number_format(accuracy = .1, decimal.mark = ",", suffix = " € / m2")
-nombre_format <- number_format(decimal.mark = ",", big.mark = " ")
 
 #' chiffre clef - nombre total de logements
 #'

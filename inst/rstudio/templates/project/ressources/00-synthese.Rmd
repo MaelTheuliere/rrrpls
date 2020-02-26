@@ -1,9 +1,9 @@
 # Synthese
 
-
 ```{r  map, fig.height=8, echo=F, message= F, warning=F}
-carte_synthese()
 
+
+carte_synthese()
 ```
 
 

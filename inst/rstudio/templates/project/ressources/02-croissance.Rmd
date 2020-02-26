@@ -1,12 +1,51 @@
 # La croissance du parc social  {#croissanceduparc}
 
+```{r map_croissance_parc,fig.width=14,fig.height=9}
+p_croissance <- carte_taux_evolution(
+  .data = indicateurs_rpls,
+  zoom_reg = T,
+  na_recode = "Pas de parc"
+) +
+  carte_taux_evolution(
+    zoom_reg = F,
+    na_recode = "Pas de parc"
+  ) +
+  plot_layout(
+    ncol = 2,
+    widths = c(3, 2)
+  )
+p_croissance
+
+```
+
+```{r croissance_parc, fig.align="right",fig.width=12,fig.height=6}
+df %>%
+  filter(
+    Indicateur == "Nombre de logements sociaux",
+    SousEnsemble %in% c("Ensemble du parc"),
+    (TypeZone %in% c("Départements", "Régions", "France") | (TypeZone == "Epci" & CodeZone %in% epci_ref$EPCI))
+  ) %>%
+  select(TypeZone,CodeZone,Zone,Indicateur,Valeur,Valeur_2018) %>%
+  mutate(evolution = Valeur * 100 / Valeur_2018 - 100) %>%
+  ggplot() +
+  geom_segment(aes(x = Zone, xend = Zone, y = 0, yend = evolution, color = TypeZone),size=1.5) +
+  geom_point(aes(x = Zone, y = evolution, fill = TypeZone), color = "white", pch = 21,size=4) +
+  theme_graph() +
+  coord_flip() +
+  scale_color_dreal_d() +
+  scale_fill_dreal_d() +
+  scale_y_continuous(labels = number_format(accuracy = 1, decimal.mark = ",", suffix = " %"))+
+  theme(legend.position = "none") +
+  labs(x = "", y = "", title = str_wrap("Croissance du parc social entre {annee_precedente} et params$annee", 30), caption = caption)
+```
+
 ```{r map_poids_recent,fig.width=14,fig.height=9}
-p_croissance <- carte_indic_croissance(
+p_parc_recent <- carte_parc_recent(
   .data = indicateurs_rpls,
   zoom_reg = T,
   na_recode = "Pas de parc récent"
 ) +
-  carte_indic_croissance(
+  carte_parc_recent(
     zoom_reg = F,
     na_recode = "Pas de parc récent"
   ) +
@@ -14,7 +53,7 @@ p_croissance <- carte_indic_croissance(
     ncol = 2,
     widths = c(3, 2)
   )
-p_croissance
+p_parc_recent
 ```
 
 ```{r poids_recent, fig.align="right",fig.width=12,fig.height=6}

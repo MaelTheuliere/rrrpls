@@ -9,6 +9,9 @@ nombre_format(x)
 \arguments{
 \item{x}{un nombre}
 }
+\value{
+chaine de caractère
+}
 \description{
 Formatage d'un nombre avec les conventions françaises
 }

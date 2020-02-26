@@ -16,9 +16,7 @@
 #' \item{Valeur_2018}{Valeur de l'indicateur en 2018}
 #' \item{Pourcent}{Pourcentage de la valeur de l'indicateur par rapport au nombre de logements sociaux total en 2018}
 #' }
-#' @source RPLS 2018.
-#' @seealso
-#' \link{rrrpls}
+#' @source RPLS 2019
 NULL
 
 #' Données rpls aggrégés par date et communes
@@ -36,7 +34,5 @@ NULL
 #' \item{qpv}{en ou hors qpv}
 #' \item{n}{nombre de logements}
 #' }
-#' @source RPLS 2019.
-#' @seealso
-#' \link{rrrpls}
+#' @source RPLS 2019
 NULL

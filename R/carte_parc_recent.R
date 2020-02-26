@@ -1,4 +1,4 @@
-#' Carte pour rpls
+#' Carte sur le poids du parc récent
 #'
 #' @param .data le dataframe en entrée
 #' @param zoom_reg booléen T si on veut la carte régional, F pour la carte national
@@ -34,7 +34,7 @@
 #' @importFrom COGiter cog_df_to_list
 #' @encoding UTF-8
 
-carte_indic_croissance<-function(.data=indicateurs_rpls,
+carte_indic_parc_recent<-function(.data=indicateurs_rpls,
                                  zoom_reg=F,
                                  na_recode="Pas de parc récent",
                                  box=bbox) {
