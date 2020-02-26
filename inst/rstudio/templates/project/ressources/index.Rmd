@@ -3,7 +3,7 @@ author: ""
 date: ""
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
+bibliography: [packages.bib]
 biblio-style: apalike
 link-citations: yes
 title: "Le parc locatif social en `r params$nom_region` au 1er janvier `r params$annee`"
@@ -104,6 +104,7 @@ bbox <- epci_region %>%
 
 ```{r caption, include=FALSE}
 
+annee_precedente <- as.numeric(params$annee)-1
 annee_recente <- as.numeric(params$annee)-5
 caption <- glue("source : RPLS {params$annee} \n carte des epci au 1er janvier 2019 \n Parc récent : logements rentrés dans le patrimoine des bailleurs depuis {annee_recente}")
 caption_poids <- glue("source : RPLS {params$annee}, recencement de la population 2016 \n carte des epci au 1er janvier 2019 \n Parc récent : logements rentrés dans le patrimoine des bailleurs depuis {annee_recente}")

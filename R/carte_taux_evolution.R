@@ -6,6 +6,7 @@
 #' @param box vecteur des coordonnées du territoire sur lequel zoomer
 #'
 #' @return la fonction renvoie un graphique ggplot2
+#' @export
 #' @importFrom rlang enquo
 #' @import magrittr
 #' @importFrom dplyr filter

@@ -106,7 +106,7 @@ carte_synthese <- function(.data = indicateurs_rpls,
     cog_df_to_list() %>%
     .$epci
 
-  indicateurs_carte_geo <- COGiter::epci_geo %>%
+  indicateurs_carte_geo <- epci_geo %>%
     inner_join(indicateurs) %>%
     filter(reg_param==1)
 

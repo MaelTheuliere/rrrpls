@@ -34,7 +34,7 @@
 #' @importFrom COGiter cog_df_to_list
 #' @encoding UTF-8
 
-carte_indic_parc_recent<-function(.data=indicateurs_rpls,
+carte_parc_recent<-function(.data=indicateurs_rpls,
                                  zoom_reg=F,
                                  na_recode="Pas de parc récent",
                                  box=bbox) {
@@ -63,7 +63,7 @@ carte_indic_parc_recent<-function(.data=indicateurs_rpls,
   }
 
 
-  data_map <-  COGiter::epci_geo %>%
+  data_map <-  epci_geo %>%
     inner_join(dt
     )
   if (zoom_reg == F) {

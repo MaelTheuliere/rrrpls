@@ -94,7 +94,7 @@ carte_indic <- function(.data = indicateurs_rpls,
     colors <- c("light grey", dreal_pal("continuous")(nlevels(dt$q) - 1))
   }
 
-  data_map <- COGiter::epci_geo %>%
+  data_map <- epci_geo %>%
     inner_join(dt)
 
   if (zoom_reg == F) {
