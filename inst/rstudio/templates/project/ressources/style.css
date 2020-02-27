@@ -25,3 +25,73 @@ pre code {
   font-weight: 300;
   font-family: "Roboto";
 }
+
+
+
+.col-sm-1{
+  float: left;
+  width: 8%;
+  text-align: left;
+}
+
+.col-sm-2{
+  float: left;
+  width: 17%;
+  text-align: left;
+}
+
+.col-left-3 {
+  float:  left;
+  width: 25%;
+  text-align: left;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%)
+}
+.col-right-3{
+  float: right;
+  width: 25%;
+  text-align: left;
+}
+
+.col-left-6{
+  float: left;
+  width: 50%;
+  text-align: left;
+}
+.col-right-6{
+  float: right;
+  width: 50%;
+  text-align: left;
+}
+.col-left-9{
+  float: left;
+  width: 75%;
+  text-align: left;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%)
+}
+.col-right-9{
+  float: right;
+  width: 75%;
+  text-align: left;
+}
+
+.col-sm-60{
+  float: left;
+  width: 60%;
+  text-align: left;
+}
+
+.col-sm-40{
+  float: left;
+  width: 40%;
+  text-align: left;
+}
+
+.newrow {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+}

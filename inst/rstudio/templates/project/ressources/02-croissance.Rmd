@@ -35,8 +35,9 @@ df %>%
   scale_color_dreal_d() +
   scale_fill_dreal_d() +
   scale_y_continuous(labels = number_format(accuracy = 1, decimal.mark = ",", suffix = " %"))+
-  theme(legend.position = "none") +
-  labs(x = "", y = "", title = str_wrap("Croissance du parc social entre {annee_precedente} et params$annee", 30), caption = caption)
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 2)) +
+  labs(x = "", y = "", title = str_wrap(glue("Croissance du parc social entre {annee_precedente} et params$annee"), 60), caption = caption)
 ```
 
 ```{r map_poids_recent,fig.width=14,fig.height=9}
@@ -73,6 +74,7 @@ df %>%
   coord_flip() +
   scale_color_dreal_d() +
   scale_fill_dreal_d() +
-  theme(legend.position = "none") +
-  labs(x = "", y = "", title = str_wrap("Poids du parc récent dans l'ensemble du parc social", 30), caption = caption)
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 2)) +
+  labs(x = "", y = "", title = str_wrap("Poids du parc récent dans l'ensemble du parc social", 60), caption = caption)
 ```

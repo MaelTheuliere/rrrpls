@@ -28,6 +28,7 @@ df %>%
   coord_flip() +
   scale_color_dreal_d() +
   scale_fill_dreal_d() +
-  theme(legend.position = "none") +
-  labs(x = "", y = "", title = str_wrap("Taux de vacance dans l'ensemble du parc", 30), caption = caption)
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 2)) +
+  labs(x = "", y = "", title = str_wrap("Taux de vacance dans l'ensemble du parc", 60), caption = caption)
 ```

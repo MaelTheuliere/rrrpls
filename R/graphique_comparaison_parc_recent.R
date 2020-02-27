@@ -81,7 +81,8 @@ graphique_comparaison_parc_recent<-function(.data= df,
     geom_point(aes(x=`Ensemble du parc`,y=1),fill=dreal_cols("secondary_active"),color=dreal_cols("secondary_active"),size=3,stroke=1,shape=21,alpha=1)+
     geom_point(aes(x=`Parc de moins de 5 ans`,y=1),fill="white",color=dreal_cols("secondary_active"),size=3,stroke=1,shape=21)+
     theme_void()+
-    theme(plot.caption = element_text(size=18))+
+    theme(plot.caption = element_text(size=18),
+          plot.title = element_text(hjust = 2))+
     annotate("text",
              x=c(min,
                  max
